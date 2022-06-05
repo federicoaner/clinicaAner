@@ -1,0 +1,111 @@
+<head>
+  <title>
+    How to change navigation bar color in Bootstrap ?
+</title>
+
+  <!-- Include Bootstrap CSS -->
+  <link rel="stylesheet"
+        href=
+"https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+
+  <style>
+      /* Modify the background color */
+       
+      .navbar-custom {
+          background-color: rgb(238, 144, 199);
+      }
+      /* Modify brand and text color */
+       
+      .navbar-custom .navbar-brand,
+      .navbar-custom .navbar-text {
+          color: rgb(255, 255, 255);
+      }
+  </style>
+</head>
+
+<nav class="navbar navbar-expand-md    mb-4 tam-letra"  >
+  
+
+  <div class="container-fluid">
+    <a class="navbar-brand" href="#"></a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarCollapse">
+      <ul class="navbar-nav me-auto mb-2 mb-md-0">
+        <li><a  class="nav-link px-2 text-white" > <img class="imagen" src="../assets/clinica.png"  [routerLink]="['/bienvenida']"  ></a></li>
+       
+        <li class="nav-titulo">
+
+       <!---->  <a class="#"  aria-current="page"   >Clinica Aner</a> 
+    <!-- <a class="nav-link active" aria-current="page" [routerLink]="['']">Home</a>  -->
+        </li>
+       
+
+       <!-- <li class="nav-item" *ngIf="this.usuario.logged?.mail=='admin@admin.com' "> -->
+        <li class="nav-item" >
+          <a class="nav-link active" aria-current="page" [routerLink]="['/usuarios']" >Usuarios</a>
+        </li>
+
+        
+     
+     
+
+      
+     
+
+       
+    
+    
+        
+        <!--
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" [routerLink]="['/juegos']" >Juegos</a>
+
+        </li>
+
+        -->
+
+        <!-- Boton Login-->
+      
+        <li class="nav-item div-botones">
+         
+          <button type="button" class="btn btn-success btn-space"  [routerLink]="['/login']"  > Login</button>
+        </li>
+
+        <li class="btnOtros">
+        
+        
+        <button type="button" class="btn btn-info btn-space letra-registro" [routerLink]="['/registro']" > Registro</button>
+        </li>
+
+      
+      
+     
+      
+      
+        <li class="nav-item ">
+          <a class="txt-bienvenido" *ngIf="this.usuario.logged?.mail">Bienvenido, {{this.usuario.logged.mail}}</a>
+        </li>
+
+        <li class="btnOtros">
+        
+        
+          <button type="button" class="btn btn-info btn-space letra-registro" > Logout</button>
+          </li>
+      
+
+      
+       
+        
+      </ul>
+     <!-- <form class="d-flex">
+        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+        <button class="btn btn-outline-success" type="submit">Search</button>
+      </form> -->
+    </div>
+  </div>
+</nav>
+
+
+<router-outlet></router-outlet>

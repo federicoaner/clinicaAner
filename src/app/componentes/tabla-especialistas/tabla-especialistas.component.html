@@ -1,0 +1,53 @@
+
+<div class="table-wrapper">
+    <table class="fl-table">
+        <thead>
+            <th>nombre</th>
+            <th>apellido</th>
+            <th>especialidad</th>
+            <th>Habilitado</th>
+            <th>Cambiar</th>
+            
+           
+            
+        </thead>
+        <tbody>
+        <tr *ngFor="let item of listadoEspecialistas | async " (click)="enviarProducto(item) " >
+      
+        <td *ngIf="item.tipo === 'especialista' ">{{item.nombre}}</td>
+        <td *ngIf="item.tipo === 'especialista' ">{{item.apellido}}</td>
+        <td *ngIf="item.tipo === 'especialista' ">{{item.especialidad}}</td>
+        
+        
+        <td  *ngIf="!item.cuentaVerificada && item.tipo === 'especialista' ">⛔</td>
+        <td *ngIf="item.cuentaVerificada && item.tipo === 'especialista' ">✅</td>
+        <td *ngIf=" !item.cuentaVerificada && item.tipo === 'especialista' ">
+            <button class="btn btn-primary  " (click)="this.verificarEspecialista(item)">Habilitar</button>
+        </td>
+        <td *ngIf="item.cuentaVerificada && item.tipo === 'especialista' ">
+            <button class="btn btn-primary  " (click)="this.verificarEspecialista(item)">Deshabilitar</button>
+        </td>
+
+   
+   
+      
+     
+       
+        </tr>
+        
+
+        
+        </tbody>
+    
+        </table>
+    
+    </div>
+    
+
+    
+  <h4 class="d-flex justify-content-between align-items-center mb-3" *ngIf="listadoEspecialistas != null">
+
+   
+  
+</h4> 
+

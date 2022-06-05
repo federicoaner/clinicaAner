@@ -1,0 +1,27 @@
+<div class="row">
+    <div class="col-md-4">
+        <button class="btn btn-primary btn-lg btn-block" (click)='tipo = "paciente" '>Pacientes</button>
+    </div>
+    <div class="col-md-4">
+        <button class="btn btn-primary btn-lg btn-block" (click)='tipo = "especialista" '>Especialistas</button>
+    </div>
+    <div class="col-md-4">
+        <button class="btn btn-primary btn-lg btn-block" >Administradores</button>
+    </div>
+</div>
+
+
+
+    <div *ngIf="this.tipo === 'paciente'">
+
+        <app-tabla-pacientes></app-tabla-pacientes>
+
+    </div>
+
+    <div *ngIf="this.tipo === 'especialista'">
+
+        <app-tabla-especialistas></app-tabla-especialistas>
+
+    </div>
+
+    

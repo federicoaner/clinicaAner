@@ -1,0 +1,38 @@
+<div class="wrapper fadeInDown">
+  <div *ngIf="this.auth.loading">
+    <app-ruedita></app-ruedita>
+</div>
+    <div id="formContent">
+      <!-- Tabs Titles -->
+      <h2 class="active"> Sign In </h2>
+     <!-- <h2 class="inactive underlineHover">Sign Up </h2> -->
+  
+      <!-- Icon 
+      <div class="fadeIn first">
+        <img src="http://danielzawadzki.com/codepen/01/icon.svg" id="icon" alt="User Icon" />
+      </div>
+      -->
+  
+      <!-- Login Form -->
+      <form>
+        <input type="text" id="email" class="fadeIn second" name="email" placeholder="email" [(ngModel)]="this.mail">
+        <input  type="password" id="password" class="fadeIn third" name="login" placeholder="password" [(ngModel)]="this.password">
+        <p *ngIf="responseMessage" >{{responseMessage}}</p>
+        <input type="submit" class="fadeIn fourth" value="Log In"  (click)="Loguearse()">
+      </form>
+  
+      <!-- Remind Passowrd 
+      <div id="formFooter">
+        <a class="underlineHover" href="#">Forgot Password?</a>
+      </div>
+      -->
+
+      <div>
+        <button class="btn btn-warning" type="button"   (click)="AccesoRapido()"   >Acceso Rapido Admin</button> 
+      </div>
+
+      
+    </div>
+  </div>
+
+ 

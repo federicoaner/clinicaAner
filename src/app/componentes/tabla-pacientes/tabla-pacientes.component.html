@@ -1,0 +1,28 @@
+
+<div class="table-wrapper">
+    <table class="fl-table">
+        <thead>
+            <th>nombre</th>
+            <th>apellido</th>
+            <th>obraSocial</th>
+            
+           
+            
+        </thead>
+        <tbody>
+        <tr *ngFor="let item of listadoPacientes | async " (click)="enviarProducto(item)">
+        <td *ngIf="item.tipo === 'paciente'">{{item.nombre}}</td>
+        <td *ngIf="item.tipo === 'paciente'">{{item.apellido}}</td>
+        <td *ngIf="item.tipo === 'paciente'">{{item.obraSocial}}</td>
+      
+     
+       
+        </tr>
+        </tbody>
+        </table>
+    </div>
+
+    
+  <h4 class="d-flex justify-content-between align-items-center mb-3" *ngIf="listadoPacientes != null">
+  
+</h4> 

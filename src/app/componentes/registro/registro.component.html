@@ -1,0 +1,293 @@
+
+
+
+
+
+
+
+  <div class="wrapper  fadeInDown ">
+   
+   
+    <div class="row justify-content-center  gap-3" >
+      
+     
+
+        <img src="../assets/paciente.png" style="width: 200px; height: 160px;" alt="" *ngIf="!this.tocado" (click)='tipo = "paciente" '  (click)="this.tocado=true"   >
+        <img src="../assets/doctor.webp" style="width: 200px; height: 180px;" alt="" *ngIf="!this.tocado"   (click)='tipo = "especialista" '  (click)="this.tocado=true"  >
+        
+        
+        
+        
+    
+    </div > 
+
+    </div>
+   
+
+
+
+
+<div class="wrapper fadeInDown" *ngIf=" this.tipo== 'paciente' ">
+   
+
+  
+   
+    <div id="formContent">
+      <!-- Tabs Titles -->
+      <h2 class="active"> Registrate </h2>
+      <br><br>
+     <!-- <h2 class="inactive underlineHover">Sign Up </h2> -->
+  
+      <!-- Icon 
+      <div class="fadeIn first">
+        <img src="http://danielzawadzki.com/codepen/01/icon.svg" id="icon" alt="User Icon" />
+      </div>
+      -->
+  
+      <!-- Login Form -->
+      <form class="needs-validation" novalidate [formGroup]="forma" (ngSubmit)="registro()">
+
+        <div class="row"  >
+        
+        <div class="col-md-6 mb-3">
+            <label for="firstName" class="fadeIn second" >Nombre</label>
+            
+            <input type="text" class="form-control" id="nombre" placeholder="" value="" required formControlName="nombre">
+            <br>
+            <small class="invalid"
+              *ngIf="forma.controls['nombre'].errors?.['required'] && forma.controls['nombre'].touched">El nombre es requerido  
+            </small>  
+          </div>
+
+          <div class="col-md-6 mb-3">
+            <label for="firstName" class="fadeIn third">Apellido</label>
+            
+            <input type="text" class="form-control" id="apellido" placeholder="" value="" required formControlName="apellido">
+            <br>
+            <small class="invalid"
+              *ngIf="forma.controls['apellido'].errors?.['required'] && forma.controls['apellido'].touched">El Apellido es requerido  
+            </small>  
+          </div>
+
+        </div>
+
+        <div class="row" >
+        
+            <div class="col-md-6 mb-3">
+                <label for="firstName" class="fadeIn fourth">Edad</label>
+                
+                <input type="number" class="form-control" id="edad" placeholder="" value="" required formControlName="edad">
+                <br>
+                <small class="invalid"
+                  *ngIf="forma.controls['edad'].errors?.['required'] && forma.controls['edad'].touched">El edad es requerido  
+                </small>  
+              </div>
+    
+              <div class="col-md-6 mb-3">
+                <label for="firstName" class="fadeIn quinto">Dni</label>
+                
+                <input type="number" class="form-control" id="dni" placeholder="" value="" required formControlName="dni">
+                <br>
+                <small class="invalid"
+                  *ngIf="forma.controls['dni'].errors?.['required'] && forma.controls['dni'].touched">El Dni es requerido  
+                </small>  
+              </div>
+    
+            </div>
+
+            <div class="">
+                <label for="firstName"  class="fadeIn sexto">Obra Social</label>
+                
+                <input type="text" class="form-control" id="obraSocial" placeholder="" value="" required formControlName="obraSocial">
+                <br>
+                <small class="invalid"
+                  *ngIf="forma.controls['obraSocial'].errors?.['required'] && forma.controls['obraSocial'].touched">El obraSocial es requerido  
+                </small>  
+              </div>
+
+              <div class="">
+                <label for="firstName" class="fadeIn sexto">Mail</label><br>
+                
+                <input type="text" class="form-control" id="mail" placeholder="" value="" required formControlName="mail">
+                <br>
+                <small class="invalid"
+                  *ngIf="forma.controls['mail'].errors?.['required'] && forma.controls['mail'].touched">El mail es requerido  
+                </small>  
+              </div>
+
+              <div class="">
+                <label for="firstName" class="fadeIn sexto">password</label><br>
+                
+                <input type="text" class="form-control" id="password" placeholder="" value="" required formControlName="password">
+                <br>
+                <small class="invalid"
+                  *ngIf="forma.controls['password'].errors?.['required'] && forma.controls['password'].touched">El password es requerido  
+                </small>  
+              </div>
+
+              <br><br>
+        
+        
+
+        
+              <!--
+         <input type="text" id="nombre" class="fadeIn second" name="nombre" placeholder="nombre">
+        <input type="text" id="apellido" class="fadeIn third" name="apellido" placeholder="apellido">
+        <input type="text" id="login" class="fadeIn second" name="login" placeholder="login">
+        <input type="submit" class="fadeIn fourth" value="Log In">
+
+              -->
+    
+    
+    
+              <button type="submit" class="btn btn-primary btn-block" 
+              [disabled]="forma.invalid"  >
+                Registrarse
+              </button>
+    
+    
+    </form>
+  
+      <!-- Remind Passowrd 
+      <div id="formFooter">
+        <a class="underlineHover" href="#">Forgot Password?</a>
+      </div>
+      -->
+  
+    </div>
+  </div>
+
+
+<!--------------------------------------------------------------------------------------------------------------------------------------------------------------------->
+
+
+  
+<div class="wrapper fadeInDown" *ngIf="this.tipo == 'especialista' ">
+   
+
+  
+   
+  <div id="formContent">
+    <!-- Tabs Titles -->
+    <h2 class="active"> Registrate </h2>
+    <br><br>
+   <!-- <h2 class="inactive underlineHover">Sign Up </h2> -->
+
+    <!-- Icon 
+    <div class="fadeIn first">
+      <img src="http://danielzawadzki.com/codepen/01/icon.svg" id="icon" alt="User Icon" />
+    </div>
+    -->
+
+    <!-- Login Form -->
+    <form class="needs-validation" novalidate [formGroup]="formb" (ngSubmit)="registroEspecialista()">
+
+      <div class="row"  >
+      
+      <div class="col-md-6 mb-3">
+          <label for="firstName" class="fadeIn second" >Nombre</label>
+          
+          <input type="text" class="form-control" id="nombre" placeholder="" value="" required formControlName="nombre">
+          <br>
+          <small class="invalid"
+            *ngIf="formb.controls['nombre'].errors?.['required'] && formb.controls['nombre'].touched">El nombre es requerido  
+          </small>  
+        </div>
+
+        <div class="col-md-6 mb-3">
+          <label for="firstName" class="fadeIn third">Apellido</label>
+          
+          <input type="text" class="form-control" id="apellido" placeholder="" value="" required formControlName="apellido">
+          <br>
+          <small class="invalid"
+            *ngIf="formb.controls['apellido'].errors?.['required'] && formb.controls['apellido'].touched">El Apellido es requerido  
+          </small>  
+        </div>
+
+      </div>
+
+      <div class="row" >
+      
+          <div class="col-md-6 mb-3">
+              <label for="firstName" class="fadeIn fourth">Edad</label>
+              
+              <input type="number" class="form-control" id="edad" placeholder="" value="" required formControlName="edad">
+              <br>
+              <small class="invalid"
+                *ngIf="formb.controls['edad'].errors?.['required'] && formb.controls['edad'].touched">La edad es requerida 
+              </small>  
+            </div>
+  
+            <div class="col-md-6 mb-3">
+              <label for="firstName" class="fadeIn quinto">Dni</label>
+              
+              <input type="number" class="form-control" id="dni" placeholder="" value="" required formControlName="dni">
+              <br>
+              <small class="invalid"
+                *ngIf="formb.controls['dni'].errors?.['required'] && formb.controls['dni'].touched">El Dni es requerido  
+              </small>  
+            </div>
+  
+          </div>
+
+          <div class="">
+              <label for="firstName"  class="fadeIn sexto">Especialidad</label>
+              
+              <input type="text" class="form-control" id="obraSocial" placeholder="" value="" required formControlName="especialidad">
+              <br>
+              <small class="invalid"
+                *ngIf="formb.controls['especialidad'].errors?.['required'] && formb.controls['especialidad'].touched">La especialidad es requerida  
+              </small>  
+            </div>
+
+            <div class="">
+              <label for="firstName" class="fadeIn sexto">Mail</label><br>
+              
+              <input type="text" class="form-control" id="mail" placeholder="" value="" required formControlName="mail">
+              <br>
+              <small class="invalid"
+                *ngIf="formb.controls['mail'].errors?.['required'] && formb.controls['mail'].touched">El mail es requerido  
+              </small>  
+            </div>
+
+            <div class="">
+              <label for="firstName" class="fadeIn sexto">password</label><br>
+              
+              <input type="text" class="form-control" id="password" placeholder="" value="" required formControlName="password">
+              <br>
+              <small class="invalid"
+                *ngIf="formb.controls['password'].errors?.['required'] && formb.controls['password'].touched">El password es requerido  
+              </small>  
+            </div>
+
+            <br><br>
+      
+      
+
+      
+            <!--
+       <input type="text" id="nombre" class="fadeIn second" name="nombre" placeholder="nombre">
+      <input type="text" id="apellido" class="fadeIn third" name="apellido" placeholder="apellido">
+      <input type="text" id="login" class="fadeIn second" name="login" placeholder="login">
+      <input type="submit" class="fadeIn fourth" value="Log In">
+
+            -->
+  
+  
+  
+            <button type="submit" class="btn btn-primary btn-block" 
+            [disabled]="formb.invalid"  >
+              Registrarse
+            </button>
+  
+  
+  </form>
+
+    <!-- Remind Passowrd 
+    <div id="formFooter">
+      <a class="underlineHover" href="#">Forgot Password?</a>
+    </div>
+    -->
+
+  </div>
+</div>
