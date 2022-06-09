@@ -32,7 +32,7 @@ En esta seccion se puede sacar turnos eligiendo el especialista, la especialidad
 
 #### Seccion Usuarios.
 Unicamente pueden acceder los usuarios q sean administradores, puediendo ver un listado con los tipos de usuarios como asi tambien pudiendo permitir el acceso a los
-usuarios Especialistas
+usuarios Especialistas, como asi dar de alta nuevos administradores (unicamente desde aca)
 
 ![usuarios](./src/assets/fotos/usuarios.png?raw=true)
 
