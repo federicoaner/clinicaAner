@@ -1,27 +1,39 @@
-# ClinicaAner
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 13.3.1.
 
-## Development server
+# Clinica Online Federico Aner
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+Podes visitar la clinica desde  este [link](https://clinica-aner.web.app/)
 
-## Code scaffolding
+## Estas son imgenes de la Pagina
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+#### Cuando Ingresas a la Pagina por Primera vez.
+Pagina de ingreso
 
-## Build
+![IngresoSeccion](./src/assets/fotos/paginaInicio.png?raw=true)
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
 
-## Running unit tests
+#### Aca podes Registrarte.
+Pudiendo elegir entre Paciente o Especialista
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+![registro](./src/assets/fotos/registro.png?raw=true)
 
-## Running end-to-end tests
+Una vez seleccionado el tipo de usuario debes completar el formulario de ingreso
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+![formIngreso](./src/assets/fotos/formIngreso.png?raw=true)
 
-## Further help
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+#### Seccion Login.
+Aca podes loguearte ademas tiene accesos directos para mayor facilidad
+
+![login](./src/assets/fotos/login.png?raw=true)
+
+#### Alta Turnos.
+En esta seccion se puede sacar turnos eligiendo el especialista, la especialidad, y la fecha del turno segun la disponibilidad del especilista
+
+![turnos](./src/assets/fotos/turnos.png?raw=true)
+
+#### Seccion Usuarios.
+Unicamente pueden acceder los usuarios q sean administradores, puediendo ver un listado con los tipos de usuarios como asi tambien pudiendo permitir el acceso a los
+usuarios Especialistas
+
+![usuarios](./src/assets/fotos/usuarios.png?raw=true)

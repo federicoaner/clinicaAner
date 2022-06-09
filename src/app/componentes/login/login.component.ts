@@ -8,6 +8,8 @@ import { FirestoreService } from 'src/app/servicios/firestore.service';
 import { Observable } from 'rxjs';
 
 import { Firestore } from '@angular/fire/firestore';
+import { ToastrService } from 'ngx-toastr';
+import { ToasterService } from 'src/app/servicios/toaster.service';
 
 @Component({
   selector: 'app-login',
@@ -25,7 +27,7 @@ export class LoginComponent implements OnInit {
   especialistas : any;
  
 
-  constructor (private router:Router,private db:AngularFirestore, public auth:LoginService, private firestore:FirestoreService ){
+  constructor (private router:Router,private db:AngularFirestore, public auth:LoginService, private firestore:FirestoreService,private toast:ToasterService ){
 
     this.mail="";
     this.password="";
@@ -50,6 +52,18 @@ export class LoginComponent implements OnInit {
  AccesoRapido(){
   this.mail = 'admin@admin.com';
   this.password = 'admin1234';
+  
+}
+
+AccesoEspecialista(){
+  this.mail = 'especialista@especialista.com';
+  this.password = 'especialista1234';
+  
+}
+
+AccesoPaciente(){
+  this.mail = 'paciente@paciente.com';
+  this.password = 'paciente1234';
   
 }
 
@@ -78,22 +92,31 @@ Loguearse(){
           }   
         }
         
-        if(auxUsuario?.tipo == 'especialista' && auxUsuario !='paciente' && auxUsuario?.cuentaVerificada){
+        if(auxUsuario.tipo == 'especialista' && auxUsuario !='paciente' && auxUsuario !='aministrador' && auxUsuario.cuentaVerificada){
          
             this.auth.logged = auxUsuario;
             this.router.navigate(['']);
             this.auth.loading=false;
-          }else if(auxUsuario?.tipo == 'especialista' && !auxUsuario.cuentaVerificada ){
-            alert('especialista no verificado');
+           // this.auth.logged = true;
+          }else if(auxUsuario?.tipo == 'especialista' && !auxUsuario?.cuentaVerificada ){
+           // alert('especialista no verificado');
+            this.toast.mostrarToastInfo("especialista no Verificado","error!");
             this.auth.signOut();
             this.auth.loading=false;
           }  
 
-          if ( auxUsuario?.tipo != 'especialista' && auxUsuario?.tipo == 'paciente' || auxUsuario.tipo == 'administrador'){
+          if ( auxUsuario?.tipo != 'especialista' && auxUsuario?.tipo == 'paciente' || auxUsuario?.tipo == 'administrador'){
+            
             this.auth.logged = auxUsuario;
-            this.router.navigate(['']);
-            alert("entro");
-            this.auth.loading=false;
+
+            console.log("log"+this.auth.logged.mail);
+            this.router.navigate(['bienvenida']);
+         //   alert("entro");
+         this.toast.mostrarToastSuccess("ok","entro!!");
+         this.auth.Login(user.mail,user.password);
+         
+         this.auth.loading=false;
+           
           } 
         }) .catch(err =>{
 

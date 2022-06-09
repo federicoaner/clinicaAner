@@ -1,0 +1,105 @@
+body {
+	background-color: #4984dc;
+}
+
+.testimonial-card .card-up {
+  height: 120px;
+  overflow: hidden;
+  border-top-left-radius: .25rem;
+  border-top-right-radius: .25rem;
+}
+
+.aqua-gradient {
+  background: linear-gradient(40deg, #2096ff, #05ffa3) !important;
+}
+
+.testimonial-card .avatar {
+  width: 200px;
+  margin-top: -60px;
+  overflow: hidden;
+  border: 5px solid #fff;
+  border-radius: 50%;
+}
+
+.segunda{
+    margin-top: 20px;
+    
+}
+
+.btdia{
+    padding-left: 10px;
+    padding-right: 10px;
+} 
+
+
+
+//////////////////
+
+
+html, body {
+  min-height: 100vh;
+}
+
+body {
+  background: linear-gradient(45deg, #ffe1c9, #fde4cf);
+}
+
+.swiper {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 260px;
+  
+  .swipe-btn {
+    cursor: pointer;
+    
+    &.back-to-start {
+      transition: transform .5s ease-in-out;
+      transform: translateX(0)!important;
+    }
+    
+    .circle {
+      fill: #ed7000;
+    }
+
+    .arrow {
+      stroke: rgb(237, 112, 0);
+      stroke-width: 1px;
+      stroke-linecap: butt;
+      stroke-linejoin: miter;
+      fill: rgb(244, 236, 225);
+    }
+  }
+  
+  .swipe-end {
+    fill-rule: evenodd;
+    stroke: rgb(237, 112, 0);
+    stroke-width: 2px;
+    stroke-linecap: butt;
+    stroke-linejoin: miter;
+    fill: none;
+  }
+  
+  .dotted-line {
+    circle {
+      fill: #0d3d7d;
+    }
+  }
+}
+
+.unlock {
+  text-transform: uppercase;
+  font-size: 12px;
+  letter-spacing: 2px;
+  color: rgb(13, 61, 125);
+  text-align: center;
+  padding: 10px;
+  transition: opacity .3s ease-in-out;
+  opacity: 0;
+  
+  &.unlocked {
+    opacity: 1;
+  }
+  
+}

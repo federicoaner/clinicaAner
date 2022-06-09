@@ -1,5 +1,5 @@
 body{margin-top:20px;
-    background:#eee;
+    background:rgb(18, 142, 224);
     }
     .service-container {
       -webkit-transition: all 0.5s ease;
@@ -45,7 +45,7 @@ body{margin-top:20px;
     
     .service-container .content .number {
       font-size: 40px;
-      color: #dee2e6;
+      color: #1f78d0;
     }
     
     .service-container .content .title {
@@ -73,7 +73,7 @@ body{margin-top:20px;
     }
     
     .service-container.hover-bg:hover .content .title {
-      color: #ffffff !important;
+      color: #af1515 !important;
     }
     
     .service-container.hover-bg:hover .content .serv-pera {
@@ -148,6 +148,11 @@ body{margin-top:20px;
     .service-wrapper {
       -webkit-transition: all 0.5s ease;
       transition: all 0.5s ease;
+      background: #0091df;
+      background-image: url("../../../assets/fonditoazul.jpg");
+      background-position: center;
+    background-size: cover;
+
     }
     
     .service-wrapper .icon {
@@ -176,10 +181,14 @@ body{margin-top:20px;
     .service-wrapper:hover {
       -webkit-box-shadow: 0 10px 25px rgba(47, 60, 78, 0.15) !important;
               box-shadow: 0 10px 25px rgba(47, 60, 78, 0.15) !important;
-      background: #ffffff;
+      background: #cad9e1;
       -webkit-transform: translateY(-8px);
               transform: translateY(-8px);
       border-color: transparent !important;
+      background-image: url("../../../assets/fondoDibujo.jpg");
+     // background-image: url("../../../assets/fondoDibujo.jpg");
+      background-position: center;
+    background-size: cover;
     }
     
     .service-wrapper:hover .icon {
@@ -204,5 +213,8 @@ body{margin-top:20px;
         font-size: inherit;
         fill: var(--uim-color, currentColor);
     }
+
+
+    
     
     

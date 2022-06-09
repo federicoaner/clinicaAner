@@ -42,10 +42,19 @@
         </li>
        
 
-       <!-- <li class="nav-item" *ngIf="this.usuario.logged?.mail=='admin@admin.com' "> -->
-        <li class="nav-item" >
-          <a class="nav-link active" aria-current="page" [routerLink]="['/usuarios']" >Usuarios</a>
+       <!-- <li class="nav-item" *ngIf="this.usuario.logged?.mail=='admin@admin.com' "        *ngIf="this.usuario.logged?.tipo=='administrador'"              > -->
+        <li class="nav-item"   >
+          <a class="nav-link active" aria-current="page" *ngIf="this.usuario.logged?.tipo=='administrador'" [routerLink]="['/usuarios']" >Usuarios</a>
         </li>
+
+        <li class="nav-item"   >
+          <a class="nav-link active" aria-current="page" *ngIf="this.usuario.logged?.tipo=='paciente' || this.usuario.logged?.tipo=='administrador'"  [routerLink]="['/turnos/alta-turnos']" >Alta Turno</a>
+        </li>
+        
+        <li class="nav-item" *ngIf="this.usuario.logged?.tipo=='especialista' || this.usuario.logged?.tipo=='paciente' "   >
+          <a class="nav-link active" aria-current="page"    [routerLink]="['/mi-perfil']" >Mi Perfil</a>
+        </li>
+        
 
         
      
@@ -85,14 +94,19 @@
       
       
         <li class="nav-item ">
-          <a class="txt-bienvenido" *ngIf="this.usuario.logged?.mail">Bienvenido, {{this.usuario.logged.mail}}</a>
+          <a class="txt-bienvenido" *ngIf="this.usuario?.logged">Bienvenido, {{this.usuario.logged.mail}}</a>
         </li>
 
         <li class="btnOtros">
         
+         <!-- <button *ngIf="!this.usuario.logged" type="button" class="btn btn-success btn-space"   [routerLink]="['/login']"> Login</button>-->
+         
+         
+         <button  *ngIf="this.usuario?.logged" class="btn btn-info btn-space letra-registro" (click)="Logout()" >Desloguearse</button>
+
+        <!-- <button type="button" class="btn btn-info btn-space letra-registro" > Logout</button>--> 
         
-          <button type="button" class="btn btn-info btn-space letra-registro" > Logout</button>
-          </li>
+        </li>
       
 
       

@@ -1,0 +1,107 @@
+<!-- 
+<div class="table-wrapper">
+    <table class="fl-table">
+        
+        <tbody>
+        <tr *ngFor="let item of listadoEspecialistas | async " >
+      
+        <td *ngIf="item.tipo === 'administrador' && item.fotoPerfil!=null " > <img src="{{item.fotoPerfil}}"  width="140" height="110" alt=""></td>
+        <td *ngIf="item.tipo === 'administrador' && item.fotoPerfil==null " > <img src="../../../assets/no_foto.jpg"  width="140" height="110" alt=""></td>
+
+        
+     
+       
+        </tr>
+        </tbody>
+        </table>
+    </div>
+-->
+
+
+    <div class="col-12 col-md-8" class="especialista">
+        <p class="p">Seleccione Especialista:</p>  
+        <span *ngFor="let item of listadoEspecialistas | async  "
+            class="badge rounded-pill  text-light m-1 mt-2 p-1 noselect" (click)="especialistaSeleccionado(item)"
+            >
+
+            <div *ngIf="item.tipo === 'especialista' && item.fotoPerfil!=null"> 
+             
+                 
+            <img [src]="item?.fotoPerfil" alt="" width="80px" height="80px" style="border-radius: 50%" appFoto>
+        </div>
+         
+
+        <div *ngIf="item.tipo === 'especialista' && item.fotoPerfil==null">     
+            <img src="../../../assets/no_foto.jpg" alt="" width="80px" height="80px" style="border-radius: 50%" appFoto>
+          
+        </div>
+        
+       
+        </span>
+    </div>
+
+
+    <div class="col-12 col-md-6 d-flex flex-wrap text-dark" class="especialidad" *ngIf="this.especialidadActual != '' " >
+        
+        
+        <p class="p">Seleccione Especialidad:</p> 
+        <span  
+            class="d-inline-flex flex-column me-2">
+            <img [src]="'../../../assets/' + this.especialidadActual + '.png'" alt="" width="80px" height="80px" style="border-radius: 50%" appFoto (click)="mostrarDiasC()">
+            <p>  {{this.especialidadActual }}</p>
+          
+        </span>
+    </div>
+
+
+    <div class="col-12 col-md-6 d-flex flex-wrap text-dark" class="especialidad" *ngIf="this.mostrarDias">
+        <p class="p">Seleccione el dia:<p>
+      
+          <div  class="d-inline-flex flex-column me-2" *ngFor="let item of this.especialistaSeleccionadox.dias" >
+            
+              <h4 >{{item}}</h4>
+              
+                <button type="button" class="btn-primary" style="margin: 5px" (click)="this.btnDia(item)">Seleccionar</button>
+            
+            
+           
+          </div>
+        
+      </div>
+
+      <div  class="col-12 col-md-6 d-flex flex-wrap text-dark" class="especialidad" *ngIf="this.mostrarFechas">
+        <p class="p">Seleccione fecha<p>
+       
+          <div  class="d-inline-flex flex-column me-2" *ngFor="let item of fechasValidas">
+            
+              <h4 style="margin: 5px" >{{item}}</h4>
+             
+                <button type="button" class="btn-primary" style="margin: 5px" (click)="this.btnFecha(item)">Seleccionar</button>
+              
+          
+          </div>
+       
+      </div>  
+
+
+      <div class="col-12 col-md-6 d-flex flex-wrap text-dark" class="especialidad" *ngIf="this.mostrarHoras">
+        <p class="p">Seleccione Hora<p>
+        
+          <div  class="d-inline-flex flex-column me-2" *ngFor="let item of horasValidas">
+            
+              <h4 style="margin: 5px">{{item}}</h4>
+              
+                <button type="button" class="btn-primary" style="margin: 5px" (click)="this.btnHora(item)">Seleccionar</button>
+           
+           
+          </div>
+      
+      </div>
+
+
+      
+
+      
+
+
+     

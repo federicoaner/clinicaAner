@@ -4,6 +4,9 @@
         <thead>
             <th>nombre</th>
             <th>apellido</th>
+            <th>mail</th>
+            <th>foto</th>
+
             <th>especialidad</th>
             <th>Habilitado</th>
             <th>Cambiar</th>
@@ -16,6 +19,9 @@
       
         <td *ngIf="item.tipo === 'especialista' ">{{item.nombre}}</td>
         <td *ngIf="item.tipo === 'especialista' ">{{item.apellido}}</td>
+        <td *ngIf="item.tipo === 'especialista' ">{{item.mail}}</td>
+        <td *ngIf="item.tipo === 'especialista' && item.fotoPerfil!=null" > <img src="{{item.fotoPerfil}}"  width="140" height="110" alt=""></td>
+        <td *ngIf="item.tipo === 'especialista' && item.fotoPerfil==null " > <img src="../../../assets/no_foto.jpg"  width="140" height="110" alt=""></td>
         <td *ngIf="item.tipo === 'especialista' ">{{item.especialidad}}</td>
         
         

@@ -16,6 +16,15 @@ import { RueditaComponent } from './componentes/ruedita/ruedita.component';
 import { SeccionUsuariosComponent } from './componentes/seccion-usuarios/seccion-usuarios.component';
 import { TablaPacientesComponent } from './componentes/tabla-pacientes/tabla-pacientes.component';
 import { TablaEspecialistasComponent } from './componentes/tabla-especialistas/tabla-especialistas.component';
+import { RegistroAdminComponent } from './componentes/registro-admin/registro-admin.component';
+import { TablaAdministradoresComponent } from './componentes/tabla-administradores/tabla-administradores.component';
+import { ToastrModule } from 'ngx-toastr';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { CommonModule, DatePipe } from '@angular/common';
+import { AltaTurnosComponent } from './componentes/turnos/alta-turnos/alta-turnos.component';
+import { RecaptchaModule } from 'ng-recaptcha';
+import { PerfilEspecialistaComponent } from './componentes/perfil-especialista/perfil-especialista.component';
+
 
 @NgModule({
   declarations: [
@@ -26,21 +35,39 @@ import { TablaEspecialistasComponent } from './componentes/tabla-especialistas/t
     RueditaComponent,
     SeccionUsuariosComponent,
     TablaPacientesComponent,
-    TablaEspecialistasComponent
+    TablaEspecialistasComponent,
+    RegistroAdminComponent,
+    TablaAdministradoresComponent,
+    AltaTurnosComponent,
+    PerfilEspecialistaComponent,
+    
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
+   //toastr
+    CommonModule,
+    BrowserAnimationsModule,
+    ToastrModule.forRoot({
+      timeOut: 2000,
+      positionClass: 'toast-top-center',
+      preventDuplicates: true,
+      
+      
+
+     
+    }),
     
     ReactiveFormsModule,
     AngularFireModule.initializeApp(environment.firebase),
+    RecaptchaModule
   
   /*  provideFirebaseApp(() => initializeApp(environment.firebase)),
     provideAuth(() => getAuth()),
     provideFirestore(() => getFirestore())*/
   ],
-  providers: [],
+  providers: [DatePipe],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

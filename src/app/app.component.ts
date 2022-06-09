@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 import { LoginService } from './servicios/login.service';
 
 @Component({
@@ -8,14 +9,23 @@ import { LoginService } from './servicios/login.service';
 })
 export class AppComponent {
   title = 'clinicaAner';
-  mail: string;
+ // mail: string;
 
 
 
-  constructor(public usuario: LoginService){
-    this.mail = this.usuario.logged.mail;
+  constructor(public usuario: LoginService, private router:Router){
+   // this.mail = this.usuario.logged.mail;
 
   }
+
+    
+  Logout(){
+
+    this.usuario.signOut();
+    this.router.navigateByUrl('login');
+
+  }
+
 
 
 }

@@ -118,27 +118,30 @@
               <div class="">
                 <label for="firstName" class="fadeIn sexto">password</label><br>
                 
-                <input type="text" class="form-control" id="password" placeholder="" value="" required formControlName="password">
+                <input type="password" class="form-control" id="password" placeholder="" value="" required formControlName="password">
                 <br>
                 <small class="invalid"
                   *ngIf="forma.controls['password'].errors?.['required'] && forma.controls['password'].touched">El password es requerido  
                 </small>  
               </div>
 
-              <br><br>
+
+              <div class="" padding-top="20px">
+              <input type="file" accept=".png, .jpg , .jpeg" multiple (change)="cargarImagen($event)">   
+
+              </div>
+
+
+              <br>
         
         
 
-        
-              <!--
-         <input type="text" id="nombre" class="fadeIn second" name="nombre" placeholder="nombre">
-        <input type="text" id="apellido" class="fadeIn third" name="apellido" placeholder="apellido">
-        <input type="text" id="login" class="fadeIn second" name="login" placeholder="login">
-        <input type="submit" class="fadeIn fourth" value="Log In">
-
-              -->
-    
-    
+              <div [hidden]="captcha" class="captcha">
+                
+                <re-captcha (resolved)="resolved($event)" siteKey="6LcEXVggAAAAACxNAc_fVf7qfGZzlaqOO4pybR5t"></re-captcha>
+            </div>
+           
+  
     
               <button type="submit" class="btn btn-primary btn-block" 
               [disabled]="forma.invalid"  >
@@ -148,11 +151,7 @@
     
     </form>
   
-      <!-- Remind Passowrd 
-      <div id="formFooter">
-        <a class="underlineHover" href="#">Forgot Password?</a>
-      </div>
-      -->
+
   
     </div>
   </div>
@@ -233,8 +232,16 @@
           <div class="">
               <label for="firstName"  class="fadeIn sexto">Especialidad</label>
               
-              <input type="text" class="form-control" id="obraSocial" placeholder="" value="" required formControlName="especialidad">
-              <br>
+             <!-- <input type="text" class="form-control" id="obraSocial" placeholder="" value="" required formControlName="especialidad"> -->
+              <select  class="form-control" formControlName='especialidad' required>
+                <option value="cardiologo" selected>Cardiologo</option>
+                <option value="traumatologo">Traumatologo</option>
+                <option value="pediatra">Pediatra</option>
+              
+               
+            </select>
+            
+            <br>
               <small class="invalid"
                 *ngIf="formb.controls['especialidad'].errors?.['required'] && formb.controls['especialidad'].touched">La especialidad es requerida  
               </small>  
@@ -253,7 +260,7 @@
             <div class="">
               <label for="firstName" class="fadeIn sexto">password</label><br>
               
-              <input type="text" class="form-control" id="password" placeholder="" value="" required formControlName="password">
+              <input type="password" class="form-control" id="password" placeholder="" value="" required formControlName="password">
               <br>
               <small class="invalid"
                 *ngIf="formb.controls['password'].errors?.['required'] && formb.controls['password'].touched">El password es requerido  
@@ -261,6 +268,11 @@
             </div>
 
             <br><br>
+
+            <div class="" padding-top="20px">
+              <input type="file" accept=".png, .jpg , .jpeg"  (change)="cargarImagenEspecialista($event)">   
+
+              </div>
       
       
 
@@ -273,7 +285,10 @@
 
             -->
   
-  
+            <div [hidden]="captcha" class="captcha">
+              
+              <re-captcha (resolved)="resolved($event)" siteKey="6LcEXVggAAAAACxNAc_fVf7qfGZzlaqOO4pybR5t"></re-captcha>
+          </div>
   
             <button type="submit" class="btn btn-primary btn-block" 
             [disabled]="formb.invalid"  >

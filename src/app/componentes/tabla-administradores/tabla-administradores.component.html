@@ -1,0 +1,52 @@
+
+<div class="table-wrapper">
+    <table class="fl-table">
+        <thead>
+            <th>nombre</th>
+            <th>apellido</th>
+            <th>mail</th>
+            <th>foto</th>
+            
+           
+            
+        </thead>
+        <tbody>
+        <tr *ngFor="let item of listadoAdmins | async " (click)="enviarProducto(item)">
+        <td *ngIf="item.tipo === 'administrador'">{{item.nombre}}</td>
+        <td *ngIf="item.tipo === 'administrador'">{{item.apellido}}</td>
+        <td *ngIf="item.tipo === 'administrador'">{{item.mail}}</td>
+        <td *ngIf="item.tipo === 'administrador' && item.fotoPerfil!=null " > <img src="{{item.fotoPerfil}}"  width="140" height="110" alt=""></td>
+        <td *ngIf="item.tipo === 'administrador' && item.fotoPerfil==null " > <img src="../../../assets/no_foto.jpg"  width="140" height="110" alt=""></td>
+
+        
+     
+       
+        </tr>
+        </tbody>
+        </table>
+    </div>
+
+    
+<div class="botones">
+    <div class="row" >
+      
+        <div class="col-md-4">
+            <button class="btn btn-primary  "  (click)="btnAlta=true">Alta Administrador</button>
+        </div>
+       
+    </div>
+    
+    </div>
+
+    
+
+ <div *ngIf="this.btnAlta">
+
+    <app-registro-admin></app-registro-admin>
+
+ </div>   
+
+    
+  <h4 class="d-flex justify-content-between align-items-center mb-3" *ngIf="listadoAdmins != null">
+  
+</h4> 

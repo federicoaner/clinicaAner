@@ -32,7 +32,7 @@ export class LoginService {
 
   Register(user : any ){
 
-    this.firestore.collection("LogUsuariosRegistrados").add(user);
+   // this.firestore.collection("LogUsuariosRegistrados").add(user);
     return this.fireauth.createUserWithEmailAndPassword(user.mail , user.password);
 
   }

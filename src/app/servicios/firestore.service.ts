@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -15,6 +16,9 @@ export class FirestoreService {
   usuarioCollection:any;
   usuarios:any;
 
+  turnosCollection:any;
+  turnos:any;
+
   constructor(private firestore:AngularFirestore) 
   {
     this.pacienteCollection=this.firestore.collection('pacientes');
@@ -27,6 +31,9 @@ export class FirestoreService {
 
     this.usuarioCollection=this.firestore.collection('usuarios'); 
     this.usuarios=this.usuarioCollection.valueChanges({idField: 'id'});
+
+    this.turnosCollection=this.firestore.collection('turnos'); 
+    this.turnos=this.turnosCollection.valueChanges({idField: 'id'});
 
 
 
@@ -49,6 +56,30 @@ export class FirestoreService {
 
    
   }
+
+
+  traerEspecialistas(){
+
+  let pacientes=this.getPacientes();
+  let especialistas:any[]=[];
+
+
+
+  for(let item of pacientes){
+    if(item.tipo == 'especialista'){
+        especialistas.push(item);
+      }
+    }
+  
+    return especialistas;
+
+
+    return this.pacientes;
+  
+  }
+
+
+  
 
 
    
@@ -94,6 +125,13 @@ export class FirestoreService {
     return this.firestore.collection('usuarios').doc(id).update(object);
 
    
+  }
+
+
+  agregarTurno(object:any){
+
+    this.firestore.collection('turnos').add(object);
+
   }
 
 

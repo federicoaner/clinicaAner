@@ -31,7 +31,9 @@
               "src/assets"
             ],
             "styles": [
+              "node_modules/ngx-toastr/toastr.css",
               "src/styles.scss"
+              
             ],
             "scripts": []
           },
@@ -40,8 +42,9 @@
               "budgets": [
                 {
                   "type": "initial",
-                  "maximumWarning": "500kb",
-                  "maximumError": "1mb"
+                  "maximumWarning": "4mb",
+                  "maximumError": "5mb"
+                  
                 },
                 {
                   "type": "anyComponentStyle",
