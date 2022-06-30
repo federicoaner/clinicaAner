@@ -1,6 +1,10 @@
+
+
 <div class="wrapper fadeInDown">
   <div *ngIf="this.auth.loading">
     <app-ruedita></app-ruedita>
+  
+    
 </div>
     <div id="formContent">
       <!-- Tabs Titles -->
@@ -18,7 +22,7 @@
         <input type="text" id="email" class="fadeIn second" name="email" placeholder="email" [(ngModel)]="this.mail">
         <input  type="password" id="password" class="fadeIn third" name="login" placeholder="password" [(ngModel)]="this.password">
         <p *ngIf="responseMessage" >{{responseMessage}}</p>
-        <input type="submit" class="fadeIn fourth" value="Log In"  (click)="Loguearse()">
+        <input type="submit" class="fadeIn fourth"   (click)="Loguearse()">
       </form>
   
       <!-- Remind Passowrd 
@@ -27,6 +31,7 @@
       </div>
       -->
 
+      <!--
       
       <div>
         <button class="btn btn-success" type="button"   (click)="AccesoRapido()"   >Acceso Rapido Admin</button> 
@@ -39,9 +44,48 @@
       <div>
         <button class="btn btn-warning" type="button"  (click)="AccesoPaciente()"   >Acceso Rapido Paciente</button> 
       </div>
+      -->
+
+      <div class="row justify-content-center aling-items-center" >
+        <div class="col-12">
+         <!-- <button class="btn btn-success" type="button"   (click)="AccesoRapido()"   >Acceso Rapido Admin</button> -->
+         
+        </div>
+
+        
+        <div class="col-sm-4 col-4 d-flex justify-content-center mb-1" >
+         
+          
+          <img src="https://firebasestorage.googleapis.com/v0/b/clinica-aner.appspot.com/o/users%2Fpedro_pedro%40admin.com_1654587184608?alt=media&token=495f1ae9-3241-4000-bfe4-f3f456777f72" alt="" width="100px" height="100px" style="border-radius: 50%" appFoto (click)="AccesoRapido()">
+        
+          
+        </div>
+        
+        <div class="col-sm-4 col-4 d-flex justify-content-center mb-1" >
+          <img src="https://firebasestorage.googleapis.com/v0/b/clinica-aner.appspot.com/o/users%2Froberto_paciente%40paciente.com_1654670727434?alt=media&token=115f6463-15c2-4d80-837d-81494b6130a0" alt="" width="100px" height="100px" style="border-radius: 50%" appFoto (click)="AccesoPaciente()">
+         
+        </div>
+
+        <div class="col-sm-4 col-4 d-flex justify-content-center mb-1" >
+          <img src="https://firebasestorage.googleapis.com/v0/b/clinica-aner.appspot.com/o/users%2Foscar_oscar%40perez.com_1654669931647?alt=media&token=8eadfea7-da01-4cbd-b806-f24e5c8f465a" alt="" width="100px" height="100px" style="border-radius: 50%" appFoto (click)="AccesoPaciente2()">
+        </div>
+
+        <div class="col-sm-4 col-4 d-flex justify-content-center mb-1" >
+          <img src="https://firebasestorage.googleapis.com/v0/b/clinica-aner.appspot.com/o/users%2F_paciente%40paciente.com_1655019199549?alt=media&token=d1139263-577e-4272-a71b-cb71167eb626" alt="" width="100px" height="100px" style="border-radius: 50%" appFoto (click)="AccesoEspecialista()">
+        </div>
+
+        <div class="col-sm-4 col-4 d-flex justify-content-center mb-1" >
+          <img src="https://firebasestorage.googleapis.com/v0/b/clinica-aner.appspot.com/o/users%2Fmaria%20paz%20_maria%40paz.com_1654903093006?alt=media&token=a6efa52b-15df-4b84-a056-a78640ad93f0" alt="" width="100px" height="100px" style="border-radius: 50%" appFoto (click)="AccesoEspecialista2()">
+        </div>
+
+        <div class="col-sm-4 col-4 d-flex justify-content-center mb-1" >
+          <img src="https://firebasestorage.googleapis.com/v0/b/clinica-aner.appspot.com/o/users%2Fadalberto_adalberto%40gmail.com_1654585480159?alt=media&token=3e49489f-9683-4d68-8c74-9b0b705bbee1" alt="" width="100px" height="100px" style="border-radius: 50%" appFoto (click)="AccesoEspecialista3()">
+        </div>
+     
+        
+        
+    </div>
 
       
     </div>
   </div>
-
- 

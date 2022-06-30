@@ -23,12 +23,16 @@ export class LoginService {
 
   Login(email : string , password : string){
     
-    this.userInfo = email;
+   
     this.loading = true;
     return this.fireauth.signInWithEmailAndPassword(email, password);
 
   }
 
+
+  private newMethod() {
+    return this;
+  }
 
   Register(user : any ){
 
@@ -42,5 +46,7 @@ export class LoginService {
     return this.fireauth.signOut();
   }
 
+
+  
 
 }

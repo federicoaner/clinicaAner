@@ -9,12 +9,12 @@ import { LoginService } from './servicios/login.service';
 })
 export class AppComponent {
   title = 'clinicaAner';
- // mail: string;
+  email: string;
 
 
 
   constructor(public usuario: LoginService, private router:Router){
-   // this.mail = this.usuario.logged.mail;
+    this.email = this.usuario.logged.email;
 
   }
 
@@ -22,6 +22,8 @@ export class AppComponent {
   Logout(){
 
     this.usuario.signOut();
+    this.usuario.logged="";
+    this.usuario.userInfo="";
     this.router.navigateByUrl('login');
 
   }

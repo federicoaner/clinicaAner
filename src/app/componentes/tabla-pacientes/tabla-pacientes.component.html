@@ -1,4 +1,4 @@
-
+<!--
 <div class="table-wrapper">
     <table class="fl-table">
         <thead>
@@ -6,8 +6,7 @@
             <th>apellido</th>
             <th>obraSocial</th>
             
-           
-            
+                    
         </thead>
         <tbody>
         <tr *ngFor="let item of listadoPacientes | async " (click)="enviarProducto(item)">
@@ -21,8 +20,70 @@
         </tbody>
         </table>
     </div>
-
+-->
     
+
+
+<!--
   <h4 class="d-flex justify-content-between align-items-center mb-3" *ngIf="listadoPacientes != null">
   
 </h4> 
+
+
+<div class="container" >     
+    <div  *ngIf="this.historiaClinica">
+
+   <div  *ngFor="let item of historiaClinica | async">
+
+    <div *ngIf="item.tipo=='paciente'">
+   <div class= "row mx-0" style="justify-content: center;" >
+     <div class="col card col-md-6" style="margin-top: 10px" >   
+      
+       <p class="card-header text-center">Historia Clinica</p>
+       <hr>
+       <p class="card-text" >Especialista: {{item.especialista}}</p>
+       <hr>
+       <p class="card-text" >Paciente: {{item.paciente}}</p>
+       <p class="card-text">Espcialidad: {{item.especialidad}}</p>
+       <p class="card-text">Reseña: {{item.resenia}}</p>
+       <p class="card-text">Peso: {{item.peso}}</p>
+       <p class="card-text">Altura: {{item.altura}}</p>
+       <p class="card-text">Pesion: {{item.resenia}}</p>
+       <p class="card-text">Temperatura: {{item.temperatura}}</p>
+     </div> 
+   </div>
+   <br>
+   
+
+ </div>
+
+
+</div>
+</div>
+
+-->
+
+
+
+<div *ngFor="let item of this.listadoPacientes |async">
+    
+    <div *ngIf="item.tipo=='paciente'">
+  <div class="card" style="width: 50rem; margin-bottom: 15px; margin-top: 10px; margin-left: 20px; padding: 20px; border-color: rgb(37, 20, 228); border-radius: 10px; border-width: 5px;"  >
+    <div class="row">
+   <div class="col md-6"> <img class="card-img-top" [src]="item.fotoPerfil" width="150px" height="200px" alt="Card image cap"> </div> 
+    <div class="col md-6">
+    <!-- <img class="card-img-top" [src]="item.fotoPerfil" style="height:120px ; width: 120px;" alt="Card image cap"> -->
+    <div class="card-body">
+      <h5 class="card-title">Nombre: {{item.nombre}}</h5>
+      <p class="card-text">Dni: {{item.dni}}</p>
+      <p class="card-text"> Mail {{item.mail}}</p>
+      <p class="card-text">Edad: {{item.edad}}</p>
+      <p  class="btn btn-success"  (click)="generarExcel(item.dni,item.nombre,item.apellido)">Crear Excel</p>
+
+    </div>
+    </div>
+  </div>
+ </div>
+</div>
+
+ </div>

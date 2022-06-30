@@ -8,6 +8,7 @@ import { FirestoreService } from 'src/app/servicios/firestore.service';
 })
 export class BienvenidaComponent implements OnInit {
 
+  loading:boolean=false;
   constructor(private firestore:FirestoreService) { }
   //constructor(){};
 
@@ -15,6 +16,8 @@ export class BienvenidaComponent implements OnInit {
 
 
   ngOnInit(): void {
+
+  
   }
 
 }

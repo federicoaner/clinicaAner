@@ -1,0 +1,102 @@
+
+<div class="scale-in-bl" >
+
+
+
+  <div *ngFor="let item of this.pacientesCarga" >
+    
+    
+    <div class="card" style="width: 50rem; margin-bottom: 20px; margin-left: 20px; padding: 20px; border-color: rgb(37, 20, 228); border-radius: 10px; border-width: 5px;"  appDirectiva1 >
+      <div class="row">
+     <div class="col md-6"> <img class="card-img-top" [src]="item.fotoPerfil" width="150px" height="200px" alt="Card image cap"> </div> 
+      <div class="col md-6">
+      <!-- <img class="card-img-top" [src]="item.fotoPerfil" style="height:120px ; width: 120px;" alt="Card image cap"> -->
+      <div class="card-body">
+        <h5 class="card-title" >Nombre: {{item.nombre  +  " " + item.apellido |todoMayuscula}} </h5>
+        <p class="card-text">Dni: {{item.dni }}</p>
+        <p class="card-text"> Mail {{item.mail | mayuscula}}</p>
+        <p class="card-text">Edad: {{item.edad | edad}}</p>
+        Ultimas Atenciones:
+
+        <div *ngFor="let datos of this.historiaClinica | async">
+
+          <div *ngIf="item.dni == datos.dniPaciente && datos.dniEspecialista==this.auth.userInfo.dni">
+           
+            <p class="d-inline"> {{datos.fecha}} {{datos.hora}}hs</p>
+          </div>
+
+
+        </div>
+
+        <p  class="btn btn-primary" style="margin-top:10px ;" (click)="cargarHistoriaClinica(item.dni)">Historia Clinica</p>
+
+      </div>
+      </div>
+    </div>
+
+
+  </div>
+
+  </div>
+
+
+
+
+
+</div>
+
+
+
+<div class="container" *ngIf="this.banderaHistoriaClinica">     
+  <div  *ngIf="this.historiaClinica">
+
+    
+
+ <div  *ngFor="let item of historiaClinica | async">
+  
+  
+
+  
+  
+ <div class= "row mx-0" style="justify-content: center;" *ngIf="this.dniActual==item.dniPaciente && this.auth.userInfo?.dni == item.dniEspecialista">
+  
+
+ 
+  
+   <div class="col card col-md-6" style="margin-top: 10px; border-color: rgb(37, 20, 228); margin: 10px; padding: 10px; border-radius: 10px; border-width: 3px; border-style: dotted;" >   
+     <!-- <button type="button" class="btn-info" (click)="seleccionHorario(item)">{{item}}</button>-->
+     <p class="card-header text-center"  style="font-size: 20px; background-color: blue; color: white;">HISTORIA CLINICA</p>
+     <hr>
+     <p class="card-text" >Especialista: {{item.especialista}}</p>
+     <hr>
+     <p class="card-text" >Paciente: {{item.paciente | todoMayuscula}}</p>
+     <p class="card-text">Especialidad: {{item.especialidad | mayuscula}}</p>
+     <p class="card-text">Reseña: {{item.resenia | mayuscula}}</p>
+     <p class="card-text">Peso: {{item.peso}}</p>
+     <p class="card-text">Altura: {{item.altura}}</p>
+     <p class="card-text">Presion: {{item.presion}}</p>
+     <p class="card-text">Temperatura: {{item.temperatura}}</p>
+     <p class="card-text">Fecha: {{item.fecha}}</p>
+     <div *ngFor="let claveValor of item.claveValor">
+     <p class="card-text" *ngIf="claveValor.clave != ''  &&  claveValor.clave != '' ">{{claveValor.clave}} : {{claveValor.valor}}</p>
+    </div>
+      
+
+     <div > <button class="btn-primary" style="margin-top: 15px; margin-bottom:20px" (click)="cerrarHistoriaClinica()">Cerrar</button></div>
+
+    </div>
+
+  
+
+
+ </div>
+ <br>
+
+ 
+
+</div>
+
+
+
+</div>
+</div>

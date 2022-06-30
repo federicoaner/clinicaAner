@@ -1,0 +1,65 @@
+
+
+<script src="https://code.highcharts.com/highcharts.js"></script>
+<script src="https://code.highcharts.com/modules/exporting.js"></script>
+<script src="https://code.highcharts.com/modules/export-data.js"></script>
+<script src="https://code.highcharts.com/modules/accessibility.js"></script>
+<script src="node_modules/chart.js/src/chart.js"></script>
+ 
+<br><br><br>
+<div class="container col-md-8" style="border:solid ; border-color:blue; margin: 25px; border-radius: 20px;" >
+<app-tabla-log></app-tabla-log>
+</div>
+
+
+
+
+<div class="container" style="border:solid ; border-color:blue; margin: 25px; padding-top: 30px; border-radius: 20px; ">
+<div id="htmlData1">
+ <div class="col-6" >
+    <highcharts-chart
+    [Highcharts] = "highcharts2" 
+    [options] = "chartOptions2" 
+    style = "width: 100%; height: 400px; display: block;">
+    </highcharts-chart>
+</div>
+</div>
+
+
+<div style="padding-left: 40px; padding-top: 20px; padding-bottom: 50px;">
+<button class="btn btn-success"     (click)="DescargarPdf()">Descargar Pdf</button>
+</div>
+
+</div>
+
+
+  <div class="container" style="border:solid ; border-color:blue; margin: 25px; padding-top: 30px; border-radius: 20px;">
+  <app-grafico1></app-grafico1>
+</div>
+
+
+<div class="container" style="border:solid ; border-color:blue; margin: 25px;  padding-top: 30px; border-radius: 20px;">
+  <app-grafico2></app-grafico2>
+</div>
+
+
+<div class="container" style="border:solid ; border-color:blue; margin: 25px; padding-top: 30px; border-radius: 20px;">
+  <app-grafico3></app-grafico3>
+</div>
+
+
+    
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+ 

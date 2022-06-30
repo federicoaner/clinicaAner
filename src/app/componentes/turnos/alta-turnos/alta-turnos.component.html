@@ -1,57 +1,98 @@
-<!-- 
-<div class="table-wrapper">
-    <table class="fl-table">
-        
-        <tbody>
-        <tr *ngFor="let item of listadoEspecialistas | async " >
-      
-        <td *ngIf="item.tipo === 'administrador' && item.fotoPerfil!=null " > <img src="{{item.fotoPerfil}}"  width="140" height="110" alt=""></td>
-        <td *ngIf="item.tipo === 'administrador' && item.fotoPerfil==null " > <img src="../../../assets/no_foto.jpg"  width="140" height="110" alt=""></td>
 
-        
-     
+    <div class="tracking-in-expand" >
+
+
+
+
+      <div *ngIf="this.auth.userInfo.tipo=='administrador'">
+      <div class="col-12 col-md-8" class="especialista">
+        <p class="p">Seleccione Paciente:</p>  
+        <span *ngFor="let item of listadoEspecialistas | async  "
+            class="badge pill  text-light m-1 mt-2 p-1 noselect" (click)="adminPase(item)"
+            >
+
+            <div *ngIf="item.tipo === 'paciente' && item.fotoPerfil!=null"> 
+                
+             
+                 
+            <img [src]="item?.fotoPerfil" alt="" width="130px" height="130px"  >
+            <p style="margin-top:14px ;">{{item.nombre}} {{item.apellido}}</p>
+        </div>
+         
+
+        <div *ngIf="item.tipo === 'paciente' && item.fotoPerfil==null">     
+            <img src="../../../assets/no_foto.jpg" alt="" width="130px" height="130px" >
+          
+        </div>
+
        
-        </tr>
-        </tbody>
-        </table>
-    </div>
--->
+        </span>
+    </div> 
+  </div>  
 
 
+  <div *ngIf="this.auth.userInfo.tipo =='paciente' || this.banderaAdmin  ">
     <div class="col-12 col-md-8" class="especialista">
         <p class="p">Seleccione Especialista:</p>  
         <span *ngFor="let item of listadoEspecialistas | async  "
-            class="badge rounded-pill  text-light m-1 mt-2 p-1 noselect" (click)="especialistaSeleccionado(item)"
+            class="badge pill  text-light m-1 mt-2 p-1 noselect" (click)="especialistaSeleccionado(item)"
             >
 
             <div *ngIf="item.tipo === 'especialista' && item.fotoPerfil!=null"> 
+                
              
                  
-            <img [src]="item?.fotoPerfil" alt="" width="80px" height="80px" style="border-radius: 50%" appFoto>
+            <img [src]="item?.fotoPerfil" alt="" width="130px" height="130px"  >
+            <p style="margin-top:14px ;">{{item.nombre}} {{item.apellido}}</p>
         </div>
          
 
         <div *ngIf="item.tipo === 'especialista' && item.fotoPerfil==null">     
-            <img src="../../../assets/no_foto.jpg" alt="" width="80px" height="80px" style="border-radius: 50%" appFoto>
+            <img src="../../../assets/no_foto.jpg" alt="" width="130px" height="130px" >
           
         </div>
+
+       
         
        
         </span>
     </div>
+  </div>
 
 
-    <div class="col-12 col-md-6 d-flex flex-wrap text-dark" class="especialidad" *ngIf="this.especialidadActual != '' " >
+            <div *ngIf="this.flag2  ">
+            <div class="col-12 col-md-6 d-flex flex-wrap text-dark" class="especialidad"  >
+                
+                
+                <p class="p">Seleccione Especialidad:</p> 
+                <span  *ngFor="let item of this.especialistaSeleccionadox.especialidad "
+                    class="d-inline-flex flex-column me-2">
+
+                    <div>
+                
+                <div  *ngIf=" item ==='cardiologo' || item ==='traumatologo' || item ==='pediatra'  " >
+                    <img  [src]="'../../../assets/' + item + '.png'"  alt="" width="110px" height="110px" style="border-radius: 50%"  (click)="mostrarDiasC(item)" appImagen >
+                    <p *ngIf=" item ==='cardiologo' || item ==='traumatologo' || item ==='pediatra'  ">{{this.especialidadElegida}}</p>
+                    </div>
+                    
+                    
+                    <div *ngIf=" item !='cardiologo' && item !='traumatologo' && item!='pediatra' " >
+                    <img   [src]="'../../../assets/' + item + '.png'" alt="" width="110px" height="110px" style="border-radius: 50%" appImagen (click)="mostrarDiasC(item)">
+                    
+                    <p >{{this.especialidadDistinta}}</p>
+                    </div> 
+                   
+                    <!-- ../../../assets/especialidadDefault.png -->
+
+                </div>
+
+
+                </span>        
         
-        
-        <p class="p">Seleccione Especialidad:</p> 
-        <span  
-            class="d-inline-flex flex-column me-2">
-            <img [src]="'../../../assets/' + this.especialidadActual + '.png'" alt="" width="80px" height="80px" style="border-radius: 50%" appFoto (click)="mostrarDiasC()">
-            <p>  {{this.especialidadActual }}</p>
-          
-        </span>
-    </div>
+            </div>
+        </div>
+
+
 
 
     <div class="col-12 col-md-6 d-flex flex-wrap text-dark" class="especialidad" *ngIf="this.mostrarDias">
@@ -61,47 +102,111 @@
             
               <h4 >{{item}}</h4>
               
-                <button type="button" class="btn-primary" style="margin: 5px" (click)="this.btnDia(item)">Seleccionar</button>
+                <button type="button" class="btn-primary rounded" style="margin: 5px" (click)="this.btnDia(item)">Seleccionar</button>
             
             
            
           </div>
         
       </div>
+
+      <!--
 
       <div  class="col-12 col-md-6 d-flex flex-wrap text-dark" class="especialidad" *ngIf="this.mostrarFechas">
-        <p class="p">Seleccione fecha<p>
+        <p class="p">Seleccione fecha y horario<p>
        
-          <div  class="d-inline-flex flex-column me-2" *ngFor="let item of fechasValidas">
+          <div  class="d-inline-flex " >
             
-              <h4 style="margin: 5px" >{{item}}</h4>
+
+            <div *ngFor="let item of fechaHoraMostrar">
+              
+              
+              
+                  <div style="border: 2px;border:solid;border-radius: 20px; margin-top: 15px; margin-right: 7px; border-color: blue;">
+                  <h4 style="margin: 5px;" >{{item}}hs  </h4> 
+                  <button type="button" class="btn-primary rounded" style="margin: 8px; "  (click)="enviar(item)"  >Sacar turno</button>
+                </div>
              
-                <button type="button" class="btn-primary" style="margin: 5px" (click)="this.btnFecha(item)">Seleccionar</button>
-              
-          
+             
+            
+          </div>
           </div>
        
-      </div>  
+      </div> 
+
+      -->
 
 
-      <div class="col-12 col-md-6 d-flex flex-wrap text-dark" class="especialidad" *ngIf="this.mostrarHoras">
-        <p class="p">Seleccione Hora<p>
-        
-          <div  class="d-inline-flex flex-column me-2" *ngFor="let item of horasValidas">
+    
+
+
+
+      <div class="col-6" class="ultimo"  *ngIf="this.mostrarFechas">
+        <p class="p">Seleccione fecha y horario<p></p>
+
+        <section class="" style="max-width: 40rem; margin-top: 20px; margin-left: 20px;  ">
+
+               <div class="col card" style="padding: 7px; border-radius: 10px; border-color: blue;" >
+        <div class="row">
+          
             
-              <h4 style="margin: 5px">{{item}}</h4>
+            
+            <div class="col-md-3"  *ngFor="let item of fechaHoraMostrar">
               
-                <button type="button" class="btn-primary" style="margin: 5px" (click)="this.btnHora(item)">Seleccionar</button>
-           
-           
-          </div>
-      
+              
+              
+              <div style="border: 2px;border:solid;border-radius: 20px; margin-top: 15px; margin-right: 4px; margin-left: 4px; border-color: blue;">
+              <h4 style="margin: 5px;" >{{item}}hs  </h4> 
+              <button type="button" class="btn-primary rounded" style="margin: 8px; "  (click)="enviar(item)"  >Sacar turno</button>
+            </div>
+         
+         
+        
       </div>
+            
+          
+         
+        </div>
+        <br>
 
 
-      
+        
+    
+    
+    </div>
+   
+</section>
 
-      
+
+
+  </div>
+  -
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    </div> <!--Animacion--> 
 
 
      

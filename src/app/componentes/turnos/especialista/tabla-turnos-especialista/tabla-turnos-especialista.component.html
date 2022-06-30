@@ -1,0 +1,154 @@
+
+<div class="container-resenia">
+  <div *ngIf="mostrarReseniaBandera">
+  <div class="row mx-0 " style="justify-content: center;">   
+    <div class="card text-center col-sm-3 ">
+     
+      <div class="card-header">Comenteario de la Reseña</div>
+      <div class="card-body wrapper fadeInDown">
+        
+       
+       <p class="card-text" >{{this.reseniaAMostrar}} </p>
+       
+       </div>
+
+       <a  class="btn btn-info"  (click)="cerrarResenia() ">Cerrar</a>
+
+
+    </div>
+  </div>
+
+</div>
+
+</div>
+
+
+
+<div class="container" >
+  <div class="row mx-0 " style="justify-content: center;">   
+
+    <div class="col-md-6 ">
+
+  
+
+      <div class="d-flex">
+        <div class="flex-grow-1">
+          <input type="text" id="filtro" class="form-control" autocomplete="off" placeholder="filtro" >
+        </div>
+        <button type="button" class="btn btn-success" style="margin-left: 5px"  (click)="filtrar()">Filtrar</button>
+      </div>
+    </div>
+
+    <div class="col-md-3 ">
+    <button  type="button" class="btn btn-outline-warning"  style="margin-left: 5px" (click)="btnReset()" >Reset</button>
+    </div>
+
+
+  </div>
+  <br>
+</div>
+
+<div class="container">
+  <div class="row mx-0 " style="justify-content: center;">   
+    <div class="col-sm-12 col-4 d-flex ">
+
+      <div >
+        <span>
+        Filtro Pacientes: 
+      <button  type="button" class="btn btn-success" *ngFor="let paciente of this.arrPacientesValidos "  style="margin-left: 5px" (click)="filtroPacientes(paciente)" >{{paciente}}</button>
+      </span>
+      </div>
+
+    </div>
+  <br>
+  <br>
+    <div class="col-sm-12 col-4 d-flex  ">
+      <div >
+        <span>
+        Filtro Especiliad: 
+      <button  type="button" class="btn btn-success" *ngFor="let especialidad of this.arrEspecialidadesValidas "  style="margin-left: 5px" (click)="filtroEspecialidades(especialidad)" >{{especialidad}}</button>
+      </span>
+      </div>
+    </div>
+
+
+    
+      
+   
+    
+
+  </div>
+</div>
+
+
+<div class="container">
+    <div class="row mx-0" style="justify-content: center;" >   
+
+   <div style="justify-content: center; width: 20rem; margin-top: 20px; margin-right: 20px" *ngFor="let item of turnosAMostrar ">
+    <div class="card text-center col-sm-12" style="border-color:blue ;"  appDirectiva1>
+    
+    <div class="card-header">Turno Para: {{item.dia}}</div>
+    <div class="card-body">
+      <h5 class="card-title">Especialista: {{item.especialista}}  </h5>
+      <hr>
+      <p class="card-text">Paciente: {{item.paciente}}</p>
+      
+      <p class="card-text">Especialidad: {{item.especialidad}}</p>
+
+      <div *ngIf="!item.realizado">
+      
+      <p class="card-text" *ngIf="!item.realizado && !item.cancelado">Estado: Sin realizar 🕑 </p>
+      <p class="card-text" *ngIf="item.realizado && !item.cancelado">Estado: Realizado ✅</p>
+      <p class="card-text" *ngIf="item.rechazado "> Rechazado 🔴 </p>
+      <p class="card-text" *ngIf="item.aceptado && !item.cancelado && !item.rechazado"> Aceptado 🟢</p>
+      
+     
+      <a  class="btn btn-success" *ngIf="!item.cancelado && !item.aceptado && !item.rechazado" (click)="aceptarTurno(item) ">Aceptar Turno</a>
+
+      
+    
+      <p class="card-text" *ngIf="item.cancelado">Estado: Cancelado ⛔</p>
+      <!--
+      <a  class="btn btn-danger" *ngIf="!item.cancelado && !item.rechazado && !item.aceptado " (click)="cancelarTurno(item) ">Cancelar Turno</a>
+      -->
+
+      
+     
+      <a  class="btn btn-danger" *ngIf="!item.rechazado && !item.aceptado && !item.cancelado" (click)="rechazarTurno(item) ">Rechazazar Turno</a>
+
+      <a  class="btn btn-info" *ngIf="!item.rechazado && item.aceptado && !item.cancelado" (click)="finalizarTurno(item) ">Finalizar Turno</a>
+
+    </div>
+
+    <p class="card-text" *ngIf="item.cancelado">Cancelado por: {{item.comentarioCancelado}}</p>
+
+    <div *ngIf="item.realizado">
+
+      <p class="card-text" *ngIf="item.realizado && !item.cancelado">Estado: Realizado ✅</p>
+      <a  class="btn btn-info"  (click)="verResenia(item) ">Reseña</a>
+
+
+    </div>
+
+    <div *ngIf="item.realizado && item.encuesta">
+      <a  class=" btn btn-warning" *ngIf="item.realizado" (click)="verEncuesta(item)" >Ver Encuesta</a>
+
+    </div>
+      
+
+
+    </div>
+    
+    <div class="card-footer text-muted">Hora: {{item.hora}}hs </div>
+    <br>
+
+
+    </div>
+</div>
+
+</div>
+
+
+</div>
+
+

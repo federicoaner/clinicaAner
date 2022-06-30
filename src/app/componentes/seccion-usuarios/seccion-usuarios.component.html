@@ -2,16 +2,39 @@
 <div class="botones">
 <div class="row" >
     <div class="col-md-4">
-        <button class="btn btn-primary btn-lg btn-block" (click)='tipo = "paciente" '>Pacientes</button>
+        <button class="btn btn-primary btn-lg btn-block" (click)='tipo = "paciente" ' >Pacientes</button>
     </div>
     <div class="col-md-4">
-        <button class="btn btn-primary btn-lg btn-block" (click)='tipo = "especialista" '>Especialistas</button>
+        <button class="btn btn-primary btn-lg btn-block" (click)='tipo = "especialista" ' >Especialistas</button>
     </div>
     <div class="col-md-4">
-        <button class="btn btn-primary btn-lg btn-block"  (click)='tipo = "administrador"'>Administradores</button>
+        <button class="btn btn-primary btn-lg btn-block"  (click)='tipo = "administrador"' >Administradores</button>
     </div>
+
+   
+
+    <div class="row"  style="justify-content:left;" >
+        <div class="col-md-1 " style="  margin-top: 15px">
+            <button class="btn btn-danger   btn-block" (click)="descargarExcel()" appColores>All users Excel</button>
+            </div>
+
+            <div class="col-md-1 " style="  margin-top: 15px">
+                <button class="btn btn-info   btn-block" (click)='tipo = "historiaC"' appColores>Historia Clinica</button>
+                </div>
+            
+        
+        
+        </div>
+
+        
+
+   <br><br>
+    
 </div>
 
+ 
+
+   
 </div>
 
 
@@ -31,6 +54,12 @@
     <div *ngIf="this.tipo === 'administrador'">
 
         <app-tabla-administradores></app-tabla-administradores>
+
+    </div>
+
+    <div *ngIf="this.tipo === 'historiaC'">
+
+        <app-historia-clinica-admin></app-historia-clinica-admin>
 
     </div>
 

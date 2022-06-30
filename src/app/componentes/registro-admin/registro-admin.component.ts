@@ -22,12 +22,12 @@ export class RegistroAdminComponent implements OnInit {
   alertError: string = "";
   responseMessage: boolean | string = false;
   imagenes: any[] = [];
-  imagenPath:string|null="";
+  imagenPath: string | null = "";
 
 
 
- 
-  constructor(private fb: FormBuilder, private firestore: FirestoreService, private auth: LoginService, private router: Router,private storage:StorageService) {
+
+  constructor(private fb: FormBuilder, private firestore: FirestoreService, private auth: LoginService, private router: Router, private storage: StorageService) {
 
 
 
@@ -37,43 +37,43 @@ export class RegistroAdminComponent implements OnInit {
       'apellido': ['', Validators.required],
       'edad': ['', Validators.required],
       'dni': ['', Validators.required],
-     
+
       'mail': ['', Validators.required],
       'password': ['', Validators.required],
       'tipo': ['administrador'],
       'fotoPerfil': ['']
-      
+
 
 
     });
 
   }
 
-  
-  cargarImagenAdmin(event:any) {
 
-    let mail : any = this.formb.get('mail')?.value;
-    let nombre : any = this.formb.get('nombre')?.value;
+  cargarImagenAdmin(event: any) {
+
+    let mail: any = this.formb.get('mail')?.value;
+    let nombre: any = this.formb.get('nombre')?.value;
     //let nombre ="carlos";
-    let archivos=event.target.files;
-    let reader=new FileReader();
-    let url:string|null;
+    let archivos = event.target.files;
+    let reader = new FileReader();
+    let url: string | null;
 
     reader.readAsDataURL(archivos[0]);
 
-    reader.onloadend= ()=>{
+    reader.onloadend = () => {
 
       console.log(reader.result);
       this.imagenes.push(reader.result);
 
-      this.storage.subirImagen(nombre + "_" + mail + "_"  + Date.now(), reader.result).then(urlImagen=>{
+      this.storage.subirImagen(nombre + "_" + mail + "_" + Date.now(), reader.result).then(urlImagen => {
         console.log(urlImagen);
-       this.imagenPath=urlImagen;
+        this.imagenPath = urlImagen;
       });
 
 
     }
-  //  return url;
+    //  return url;
 
   }
 
@@ -84,15 +84,13 @@ export class RegistroAdminComponent implements OnInit {
       apellido: this.formb.get('apellido')?.value,
       edad: this.formb.get('edad')?.value,
       dni: this.formb.get('dni')?.value,
-      
+
       mail: this.formb.get('mail')?.value,
       password: this.formb.get('password')?.value,
       tipo: "administrador",
       fotoPerfil: this.imagenPath
     }
 
-    // this.firestore.agregarUsuario(this.forma.value);
-    //this.auth.Register(user);
 
 
 

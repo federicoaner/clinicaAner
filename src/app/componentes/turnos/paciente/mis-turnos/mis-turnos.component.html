@@ -1,0 +1,16 @@
+<p>mis-turnos paciente!</p>
+
+
+<div class="row" style="justify-content: center; margin: 5px" *ngIf="mostrarCancelar">
+    <div class="wrapper fadeInDown">
+    <div class="card text-center col-sm-6"  >
+    <textarea class="ingreso" style="border-radius: 5px; margin-top: 5px" id="comentario" cols="6" rows="3" placeholder="Porque Cancelas el turno?"></textarea>
+    <button class="btn btn-danger btn-block  col-sm-3"  style="justify-content: center;"  style="margin-top: 5px" (click)="this.confirmar()">Comentar y Cancelar</button>
+    </div>
+ </div>
+</div>
+
+
+<app-tabla-turnos-paciente (cancelar)="cancelarTurno($event)"  (encuesta)="completarEncuesta($event)" ></app-tabla-turnos-paciente>
+
+

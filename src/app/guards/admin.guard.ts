@@ -1,39 +1,42 @@
 import { Injectable } from '@angular/core';
-import { ActivatedRouteSnapshot, CanActivate, RouterStateSnapshot, UrlTree } from '@angular/router';
+import { ActivatedRouteSnapshot, CanActivate, Router, RouterStateSnapshot, UrlTree } from '@angular/router';
 import { Observable } from 'rxjs';
-import { Router } from '@angular/router';
-import { FirestoreService } from '../servicios/firestore.service';
 import { LoginService } from '../servicios/login.service';
+import Swal from 'sweetalert2';
+
+
 @Injectable({
   providedIn: 'root'
 })
 export class AdminGuard implements CanActivate {
 
-  constructor(private router:Router,private auth:LoginService){
-
+  constructor(private lg : LoginService,private router : Router){
+    
   }
-  
-  
-
-
   canActivate(
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
    
-   
-   
-   if(  this.auth.logged  || this.auth.logged?.tipo === "administrador"){
+      if (this.lg.userInfo.tipo != 'administrador') {
+       
 
-    
-    return true;
-    
+         
+        Swal.fire(
+          'Que hacemooooooo?',
+          'Solo un admin puede entrar!!!',
+          'question'
+        )
+       
+        this.router.navigate(['/login']);
 
-   }else{
-    this.router.navigate(['/']);
-    return false;
-   }
+
+       
+        return false;
+    }
    
-      
+   
+   
+      return true;
   }
   
 }

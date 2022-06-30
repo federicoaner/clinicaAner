@@ -8,6 +8,11 @@
     margin-top: 40px;
 }
 
+.ultimo{
+    margin-left: 250px;
+    margin-top: 40px;
+}
+
 .badge{
     background-color: rgb(30, 30, 209);
 }
@@ -17,3 +22,6 @@
     font-size: larger;
     font-style: italic;
 }
+
+.tracking-in-expand{animation:tracking-in-expand .7s cubic-bezier(.215,.61,.355,1.000) both}
+@keyframes tracking-in-expand{0%{letter-spacing:-.5em;opacity:0}40%{opacity:.6}100%{opacity:1}}

@@ -19,6 +19,12 @@ export class FirestoreService {
   turnosCollection:any;
   turnos:any;
 
+  historiaClinicaCollection:any;
+  historiaClinica:any;
+
+ logUsuariosCollection:any;
+ logUsuarios:any;
+
   constructor(private firestore:AngularFirestore) 
   {
     this.pacienteCollection=this.firestore.collection('pacientes');
@@ -35,8 +41,38 @@ export class FirestoreService {
     this.turnosCollection=this.firestore.collection('turnos'); 
     this.turnos=this.turnosCollection.valueChanges({idField: 'id'});
 
+    this.historiaClinicaCollection=this.firestore.collection('historiaClinica'); 
+    this.historiaClinica=this.historiaClinicaCollection.valueChanges({idField: 'id'});
+
+    this.logUsuariosCollection=this.firestore.collection('logUsuarios'); 
+    this.logUsuarios=this.logUsuariosCollection.valueChanges({idField: 'id'});
 
 
+
+  }
+
+
+  guardarLog(mail:any){
+    let day = new Date();
+    let hora: any = day.getHours();
+    let minutos: any = day.getMinutes();
+
+    if(hora < 10)
+    {
+      hora = '0' + hora;
+    }
+
+    if(minutos < 10)
+    {
+      minutos = '0' + minutos;
+    }
+
+    let log = {
+      usuario: mail,
+      hora: hora + ':' + minutos,
+      fecha: day.getDate() + '/' + ( day.getMonth() + 1 ) + '/' + day.getFullYear(),
+    }
+    this.firestore.collection('logUsuarios').add(log);
   }
 
   getPacientes(){
@@ -49,10 +85,39 @@ export class FirestoreService {
     this.firestore.collection('pacientes').add(object);
    }
 
+   getLogUsuarios(){
+
+    return this.logUsuarios;
+   }
+
+   agregarLogUsuarios(object:any){
+
+    this.firestore.collection('logUsuarios').add(object);
+   }
+
+   getHistoriaClinica(){
+
+    return this.historiaClinica;
+   }
+
+   agregarHistoriaClinica(object:any){
+
+    this.firestore.collection('historiaClinica').add(object);
+   }
+
+
    modificarEspecialista(object : any, id : any){
    
     console.log("modificado");
     return this.firestore.collection('usuarios').doc(id).update(object);
+
+   
+  }
+
+  modificarTurno(object : any, id : any){
+   
+    console.log("modificado");
+    return this.firestore.collection('turnos').doc(id).update(object);
 
    
   }
@@ -127,6 +192,10 @@ export class FirestoreService {
    
   }
 
+  getTurnos(){
+
+    return this.turnos;
+   }
 
   agregarTurno(object:any){
 

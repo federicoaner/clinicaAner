@@ -7,32 +7,33 @@
 
     <section class="mx-auto my-5" style="max-width: 23rem;">
 
-        <button  class="btn btn-info mt-2" *ngIf="auth.logged.tipo == 'especialista'" (click)="verHorarios()">{{verHorariosBtn}}</button>
+        <button  class="btn btn-info mt-2" *ngIf="auth.userInfo.tipo == 'especialista'" (click)="verHorarios()">{{verHorariosBtn}}</button>
         
-      <div class="card testimonial-card mt-2 mb-3">
+      <div class="card testimonial-card mt-2 mb-3" style=" border-color: blue; border-width: 4px;">
         <div class="card-up aqua-gradient"></div>
         <div class="avatar mx-auto white">
-          <img src="{{auth.logged.fotoPerfil}}" class="rounded-circle  img-fluid" style="width: 300px; height: 150px;"
+          <img src="{{auth.userInfo.fotoPerfil}}" class="rounded-circle  img-fluid" style="width: 300px; height: 150px;"
             alt="woman avatar">
         </div>
-        <div class="card-body text-center">
-          <h4 class="card-title font-weight-bold">{{this.auth.logged?.nombre}} {{this.auth.logged?.apellido}}</h4>
+        <div class="card-body text-center" >
+          <h4 class="card-title font-weight-bold">{{this.auth.userInfo?.nombre}} {{this.auth.userInfo?.apellido}}</h4>
           <hr>
-          <h4 *ngIf="auth.logged.tipo == 'especialista'" class=" font-weight-bold">Especialidad : {{this.auth.logged?.especialidad}} </h4>
+          <h4 *ngIf="auth.userInfo.tipo == 'especialista'" class=" font-weight-bold">Especialidad : {{this.auth.userInfo?.especialidad}} </h4>
           <hr>
-          <h4 class="font-weight-bold">Dni : {{this.auth.logged?.dni}} </h4>
+          <h4 class="font-weight-bold">Dni : {{this.auth.userInfo?.dni}} </h4>
           <hr>
-          <h4 class=" font-weight-bold">Email : {{this.auth.logged?.mail}} </h4>
+          <h4 class=" font-weight-bold">Email : {{this.auth.userInfo?.mail}} </h4>
           <hr>
-          <h4 *ngIf="auth.logged.tipo == 'especialista'" class=" font-weight-bold">Dias : {{this.auth.logged?.dias}} </h4>
-          <p><i class="fas fa-quote-left"></i> Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eos,
-            adipisci</p>
+          <h4 *ngIf="auth.userInfo.tipo == 'especialista'" class=" font-weight-bold">Dias : {{this.auth.userInfo?.dias}} </h4>
+         
         </div>
       </div>
       
     </section>
-
+     
     </div>
+
+    
 
 
     <!--COL 2-->
@@ -43,7 +44,7 @@
         <section class="mx-auto my-5" style="max-width: 23rem;">
         <div class="col card" style="padding: 5px; border-radius: 10px;" *ngIf="this.horarios">
 
-            <button type="button" class="btn-info"  *ngFor="let item of diasArray"(click)="seleccionDia(item)">{{item}}</button>
+            <button type="button" class="btn-info"  *ngFor="let item of diasArray"(click)="elegirDia(item)">{{item}}</button>
   
            
   
@@ -61,15 +62,8 @@
 
         </section>
 
-        <div *ngIf="this.horarios">
-        <p class="mb-2">Dias:<p>
-      <!---->  <p>{{userDias}}</p>
-          
-       
 
-        <p class="mb-2">Horarios:<p>
-        <p>{{userHorarios}}</p>
-    </div>
+     
   
   </div>
 
@@ -80,7 +74,7 @@
                    <div class="col card" style="padding: 7px; border-radius: 10px;" *ngIf="this.horarios">
             <div class="row">
               <div class="col-md-3" style="margin-top: 10px" *ngFor="let item of horasArray">   
-                <button type="button" class="btn-info" (click)="seleccionHorario(item)">{{item}}</button>
+                <button type="button" class="btn-info" (click)="elegirHorario(item)">{{item}}</button>
               </div> 
             </div>
             <br>
@@ -97,14 +91,67 @@
 
       </div>
 
+      <!---SECCION PACIENTE HISTORIA CLINICA-->
+
+      <div *ngIf="auth.userInfo.tipo == 'paciente'">
+      <div  *ngFor="let item of arrEspecialidadesValidas">
+      
+            <button class="btn btn-danger" (click)="crearPDF(item)">Crear Pdf: {{item}}s</button>
+       
+      </div>
+    </div>
+
+      <div class="container" *ngIf="auth.userInfo.tipo == 'paciente'">     
+         <div  *ngIf="this.historiaClinica">
+
+        <div  *ngFor="let item of historiaClinicaBD">
+
+        
+        <div class="row" *ngIf="item.dniPaciente == auth.userInfo.dni">
+          <div class="col card col-md-6" style="margin-top: 10px" >   
+            <!-- <button type="button" class="btn-info" (click)="seleccionHorario(item)">{{item}}</button>-->
+            <p class="card-header text-center">Historia Clinica</p>
+            <hr>
+            <p class="card-text" >Especialista: {{item.especialista}}</p>
+            <hr>
+            <p class="card-text">Especialidad: {{item.especialidad}}</p>
+            <p class="card-text">Reseña: {{item.resenia}}</p>
+            <p class="card-text">Peso: {{item.peso}}</p>
+            <p class="card-text">Altura: {{item.altura}}</p>
+            <p class="card-text">Presion: {{item.presion}}</p>
+            <p class="card-text">Temperatura: {{item.temperatura}}</p>
+            <div *ngFor="let claveValor of item.claveValor">
+              <p class="card-text" style="margin-bottom: 8px ;" *ngIf="claveValor.clave != ''  &&  claveValor.clave != '' ">{{claveValor.clave}} : {{claveValor.valor}}</p>
+             </div>
+
+            
+          </div> 
+        </div>
+        <br>
+
+       
+          
+    
+    
+        
+   
+      </div>
 
 
 
+     </div>
+    </div>
+
+
+
+
+    
 
 </div>
 </div>
 
 
- 
+
+
 
  

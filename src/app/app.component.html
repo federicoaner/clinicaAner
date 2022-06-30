@@ -44,48 +44,51 @@
 
        <!-- <li class="nav-item" *ngIf="this.usuario.logged?.mail=='admin@admin.com' "        *ngIf="this.usuario.logged?.tipo=='administrador'"              > -->
         <li class="nav-item"   >
-          <a class="nav-link active" aria-current="page" *ngIf="this.usuario.logged?.tipo=='administrador'" [routerLink]="['/usuarios']" >Usuarios</a>
+          <a class="nav-link active" aria-current="page" *ngIf="this.usuario.userInfo?.tipo=='administrador'" [routerLink]="['/usuarios']" >Usuarios</a>
         </li>
 
         <li class="nav-item"   >
-          <a class="nav-link active" aria-current="page" *ngIf="this.usuario.logged?.tipo=='paciente' || this.usuario.logged?.tipo=='administrador'"  [routerLink]="['/turnos/alta-turnos']" >Alta Turno</a>
+          <a class="nav-link active" aria-current="page" *ngIf="this.usuario.userInfo?.tipo=='paciente' || this.usuario.userInfo?.tipo=='administrador'"  [routerLink]="['/turnos/alta']" >Alta Turno</a>
         </li>
         
-        <li class="nav-item" *ngIf="this.usuario.logged?.tipo=='especialista' || this.usuario.logged?.tipo=='paciente' "   >
+        <li class="nav-item" *ngIf="this.usuario.userInfo?.tipo=='especialista' || this.usuario.userInfo?.tipo=='paciente' "   >
           <a class="nav-link active" aria-current="page"    [routerLink]="['/mi-perfil']" >Mi Perfil</a>
         </li>
         
-
-        
-     
-     
-
-      
-     
-
-       
-    
-    
-        
-        <!--
-        <li class="nav-item">
-          <a class="nav-link active" aria-current="page" [routerLink]="['/juegos']" >Juegos</a>
-
+        <li class="nav-item" *ngIf="this.usuario.userInfo?.tipo=='paciente'"  >
+          <a class="nav-link active" aria-current="page"    [routerLink]="['turnos/paciente']" >Mis Turnos</a>
         </li>
 
-        -->
+        <li class="nav-item" *ngIf="this.usuario.userInfo?.tipo=='especialista'"  >
+          <a class="nav-link active" aria-current="page"    [routerLink]="['turnos/especialista']" >Mis Turnos</a>
+        </li>
 
-        <!-- Boton Login-->
+        <li class="nav-item" *ngIf="this.usuario.userInfo?.tipo=='especialista'"  >
+          <a class="nav-link active" aria-current="page"    [routerLink]="['/seccion-pacientes']" >Pacientes</a>
+        </li>
+
+        <li class="nav-item" *ngIf="this.usuario.userInfo?.tipo=='administrador'"  >
+          <a class="nav-link active" aria-current="page"    [routerLink]="['turnos/administrador']" >Turnos</a>
+        </li>
+
+        <li class="nav-item" *ngIf="this.usuario.userInfo?.tipo=='administrador'"  >
+          <a class="nav-link active" aria-current="page"    [routerLink]="['/informes']" >Informes</a>
+        </li>
+
+
+        
+     
+  
       
-        <li class="nav-item div-botones">
+        <li class="nav-item div-botones" >
          
-          <button type="button" class="btn btn-success btn-space"  [routerLink]="['/login']"  > Login</button>
+          <button type="button" class="btn btn-success btn-space"  *ngIf="!this.usuario.logged" [routerLink]="['/login']"  > Login</button>
         </li>
 
         <li class="btnOtros">
         
         
-        <button type="button" class="btn btn-info btn-space letra-registro" [routerLink]="['/registro']" > Registro</button>
+        <button type="button" class="btn btn-info btn-space letra-registro" *ngIf="!this.usuario.logged" [routerLink]="['/registro']" > Registro</button>
         </li>
 
       
@@ -93,8 +96,8 @@
      
       
       
-        <li class="nav-item ">
-          <a class="txt-bienvenido" *ngIf="this.usuario?.logged">Bienvenido, {{this.usuario.logged.mail}}</a>
+        <li class="nav-item " style="margin-top:15px ;">
+          <a class="txt-bienvenido" style="color: rgb(216, 237, 242);" *ngIf="this.usuario?.logged">Bienvenido, {{this.usuario.userInfo.nombre}} {{this.usuario.userInfo.apellido}}</a>
         </li>
 
         <li class="btnOtros">

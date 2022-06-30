@@ -5,6 +5,7 @@ import { LoginService } from 'src/app/servicios/login.service';
 import { Router } from '@angular/router';
 import { StorageService } from 'src/app/servicios/storage.service';
 import { ToasterService } from 'src/app/servicios/toaster.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-registro',
@@ -23,12 +24,14 @@ export class RegistroComponent implements OnInit {
   imagenPath:string|null="";
   captcha:string;
 
+  especialidades: any[] = [];
 
 
 
 
 
-  constructor(private fb: FormBuilder, private firestore: FirestoreService, private auth: LoginService, private router: Router,private storage:StorageService,private toast:ToasterService) {
+
+  constructor(private fb: FormBuilder, private firestore: FirestoreService, public auth: LoginService, private router: Router,private storage:StorageService,private toast:ToasterService) {
 
 
     this.captcha="";
@@ -62,6 +65,7 @@ export class RegistroComponent implements OnInit {
       'cuentaVerificada': [false],
       'tipo': ['especialista'],
       'fotoPerfil': [''],
+      'especialidadAgregada': [''],
       
       
       
@@ -71,6 +75,25 @@ export class RegistroComponent implements OnInit {
 
   }
 
+
+
+  agregarEspecialidad(){
+   let especialidad= this.formb.get('especialidadAgregada')?.value;
+    
+     this.especialidades.push(especialidad);
+
+     console.log(this.especialidades);
+    
+  }
+
+  agregarEspecialidadFija(){
+    let especialidad= this.formb.get('especialidad')?.value;
+     
+      this.especialidades.push(especialidad);
+ 
+      console.log(this.especialidades);
+     
+   }
 
 
   resolved(captchaResponse:string){
@@ -104,7 +127,7 @@ export class RegistroComponent implements OnInit {
 
 
       }
-    //  return url;
+
 
     }
 
@@ -148,6 +171,8 @@ export class RegistroComponent implements OnInit {
 
   registro() {
 
+    this.auth.loading=true;
+
     let user = {
       nombre: this.forma.get('nombre')?.value,
       apellido: this.forma.get('apellido')?.value,
@@ -161,12 +186,6 @@ export class RegistroComponent implements OnInit {
       
     }
 
-        
-   
-
-    // this.firestore.agregarUsuario(this.forma.value);
-    //this.auth.Register(user);
-
 
 
     this.auth.Register(user)
@@ -177,7 +196,7 @@ export class RegistroComponent implements OnInit {
           
         this.firestore.agregarUsuario(user);
 
-        this.router.navigateByUrl('');
+        this.router.navigateByUrl('login');
 
       }).catch((error: any) => {
 
@@ -194,21 +213,24 @@ export class RegistroComponent implements OnInit {
 
   registroEspecialista() {
 
+    this.auth.loading=true;
+
     let userb = {
       nombre: this.formb.get('nombre')?.value,
       apellido: this.formb.get('apellido')?.value,
       edad: this.formb.get('edad')?.value,
       dni: this.formb.get('dni')?.value,
-      especialidad: this.formb.get('especialidad')?.value,
+     // especialidad: this.formb.get('especialidad')?.value,
+      especialidad: this.especialidades,
       mail: this.formb.get('mail')?.value,
       password: this.formb.get('password')?.value,
-      cuentaVerificada: "false",
+      cuentaVerificada: false,
       tipo: "especialista",
-      fotoPerfil: this.imagenPath
+      fotoPerfil: this.imagenPath,
+      turnos: []
     }
 
-    // this.firestore.agregarUsuario(this.forma.value);
-    //this.auth.Register(user);
+
 
 
 
@@ -217,7 +239,17 @@ export class RegistroComponent implements OnInit {
 
         this.firestore.agregarUsuario(userb);
 
-        this.router.navigateByUrl('');
+        
+        Swal.fire({
+          position: 'center',
+          icon: 'warning',
+          title: 'Recorda que te tiene que habilitar un Administrador!',
+          showConfirmButton: false,
+          timer: 2800
+        })
+
+
+        this.router.navigateByUrl('login');
 
       }).catch((error: any) => {
 
@@ -230,11 +262,6 @@ export class RegistroComponent implements OnInit {
 
 
   }
-
-
-
-
-
 
 
 

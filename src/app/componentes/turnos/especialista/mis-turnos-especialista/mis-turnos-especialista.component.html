@@ -1,0 +1,59 @@
+
+
+<div class="row" style="justify-content: center; margin: 5px" *ngIf="mostrarRechazar">
+    <div class="wrapper fadeInDown">
+    <div class="card text-center col-sm-6"  >
+    <textarea class="ingreso" style="border-radius: 5px; margin-top: 5px" id="comentario" cols="6" rows="3" placeholder="comentario?"></textarea>
+    <button class="btn btn-danger btn-block  col-sm-3"  style="justify-content: center;"  style="margin-top: 5px" (click)="this.confirmarRechazo()">Comentar y Cancelar</button>
+    </div>
+ </div>
+</div>
+
+<div *ngIf="mostrarFinalizar" style="justify-content: center">
+    
+    <div class="row" style="justify-content: center; margin: 5px">
+        <div class="col-sm-4"  >
+    <form>
+        <textarea name="resenia" id="resenia" cols="40" rows="3" [(ngModel)]="this.resenia" placeholder="dejar reseña del turno"></textarea>
+        <input type="number" id="peso" class="fadeIn first" name="peso" placeholder="peso" [(ngModel)]="this.peso">
+        <input  type="number" id="altura" class="fadeIn third" name="altura" placeholder="altura" [(ngModel)]="this.altura">
+        <input  type="number" id="temperatura" class="fadeIn third" name="temperatura" placeholder="temperatura" [(ngModel)]="this.temperatura">
+        <input  type="number" id="presion" class="fadeIn third" name="presion" placeholder="presion" [(ngModel)]="this.presion">
+        
+        <div class="col-sm-8  d-flex">
+       
+                <input type="text" class="form-control" id="clave1" placeholder="Opcional clave">           
+              
+                <input type="number" class="form-control" id="valor1"  placeholder="valor">
+          
+        </div>
+
+        <div class="col-sm-8  d-flex">
+            <input type="text" class="form-control" id="clave2" placeholder="Opcional clave">           
+            <input type="number" class="form-control" id="valor2"  placeholder="valor">
+        </div>
+
+        <div class="col-sm-8  d-flex">
+            <input type="text" class="form-control" id="clave3" placeholder="Opcional clave">           
+            <input type="number" class="form-control" id="valor3"  placeholder="valor">
+        </div>
+      
+        
+
+        <input type="submit" class="fadeIn second"   (click)="finalizarForm()">
+      
+    
+    </form>
+
+
+    </div>   
+    </div> 
+
+
+ </div>
+
+
+ 
+
+
+<app-tabla-turnos-especialista (rechazar)="rechazarTurno($event)"    (finalizar)="finalizarTurno($event)" ></app-tabla-turnos-especialista>

@@ -1,5 +1,6 @@
 
-
+<div class="wrapper fadeInDown">
+  
 
 
 
@@ -12,8 +13,8 @@
       
      
 
-        <img src="../assets/paciente.png" style="width: 200px; height: 160px;" alt="" *ngIf="!this.tocado" (click)='tipo = "paciente" '  (click)="this.tocado=true"   >
-        <img src="../assets/doctor.webp" style="width: 200px; height: 180px;" alt="" *ngIf="!this.tocado"   (click)='tipo = "especialista" '  (click)="this.tocado=true"  >
+        <img src="../assets/paciente.png"   style="background-color: #2920c3; border-radius: 50%; width: 200px; height: 180px" alt="" *ngIf="!this.tocado" (click)='tipo = "paciente" '  (click)="this.tocado=true"   >
+        <img src="../assets/doctor.webp"    style="background-color: #000971; border-radius: 50%; width: 200px; height: 180px" alt="" *ngIf="!this.tocado"   (click)='tipo = "especialista" '  (click)="this.tocado=true"  >
         
         
         
@@ -240,17 +241,31 @@
               
                
             </select>
+            <button class="btn-primary" (click)="agregarEspecialidadFija()" >Agregar</button>
             
             <br>
               <small class="invalid"
                 *ngIf="formb.controls['especialidad'].errors?.['required'] && formb.controls['especialidad'].touched">La especialidad es requerida  
               </small>  
             </div>
+           
+            <br>
+
+            <div class="">
+              <label for="firstName" class="fadeIn sexto">AgregarEspecialidad</label><br>
+              
+              <input type="text" class="form-control"  placeholder="" value="" required formControlName="especialidadAgregada">
+              <button class="btn-primary" (click)="agregarEspecialidad()" >Nueva Especialidad</button>
+              <br>
+              
+            </div>
+
+            <br>
 
             <div class="">
               <label for="firstName" class="fadeIn sexto">Mail</label><br>
               
-              <input type="text" class="form-control" id="mail" placeholder="" value="" required formControlName="mail">
+              <input type="text" class="form-control"  placeholder="" value="" required formControlName="mail">
               <br>
               <small class="invalid"
                 *ngIf="formb.controls['mail'].errors?.['required'] && formb.controls['mail'].touched">El mail es requerido  
@@ -260,7 +275,7 @@
             <div class="">
               <label for="firstName" class="fadeIn sexto">password</label><br>
               
-              <input type="password" class="form-control" id="password" placeholder="" value="" required formControlName="password">
+              <input type="password" class="form-control"  placeholder="" value="" required formControlName="password">
               <br>
               <small class="invalid"
                 *ngIf="formb.controls['password'].errors?.['required'] && formb.controls['password'].touched">El password es requerido  

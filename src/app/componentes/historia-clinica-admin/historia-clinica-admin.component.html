@@ -1,0 +1,30 @@
+
+<div class="container" style="margin-top:30px ;">     
+    <div  *ngIf="this.historiaClinica">
+
+  
+
+   <div class="row " >
+    <div style="justify-content: center; width: 28rem; margin-top: 10px; "  *ngFor="let item of historiaClinica | async">
+     <div class="col card col-md-10" style="margin-top: 10px" >   
+       <!-- <button type="button" class="btn-info" (click)="seleccionHorario(item)">{{item}}</button>-->
+       <p class="card-header text-center">Historia Clinica</p>
+       <hr>
+       <p class="card-text" >Especialista: {{item.especialista}}</p>
+       <hr>
+       <p class="card-text" >Paciente: {{item.paciente}}</p>
+       <p class="card-text">Especialidad: {{item.especialidad}}</p>
+       <p class="card-text" >Fecha: {{item.fecha}}</p>
+       <p class="card-text">Reseña: {{item.resenia}}</p>
+       <p class="card-text">Peso: {{item.peso}}</p>
+       <p class="card-text">Altura: {{item.altura}}</p>
+       <p class="card-text">Presion: {{item.presion}}</p>
+       <p class="card-text">Temperatura: {{item.temperatura}}</p>
+       <div *ngFor="let claveValor of item.claveValor">
+        <p class="card-text" *ngIf="claveValor.clave != ''  &&  claveValor.clave != '' ">{{claveValor.clave}} : {{claveValor.valor}}</p>
+       </div>
+     </div> 
+     
+
+   </div>
+   <br>

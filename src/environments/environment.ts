@@ -11,6 +11,7 @@ export const environment = {
     authDomain: 'clinica-aner.firebaseapp.com',
     messagingSenderId: '377309387824',
     measurementId: 'G-MR03N2VKJC',
+    urlImage: 'https://www.vectorstock.com/royalty-free-vector/male-profile-picture-vector-1862205'
   },
   production: false
 };
